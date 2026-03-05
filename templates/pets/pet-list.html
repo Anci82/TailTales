@@ -1,0 +1,15 @@
+<h1>My Pets</h1>
+
+<a href="{% url 'pet-create' %}">Add Pet</a>
+
+<ul>
+    {% for pet in pets %}
+        <li>
+            <a href="{% url 'pet-detail' pet.pk %}">
+                {{ pet.name }} ({{ pet.species }})
+            </a>
+        </li>
+    {% empty %}
+        <li>No pets yet.</li>
+    {% endfor %}
+</ul>
