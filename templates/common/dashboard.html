@@ -1,15 +1,29 @@
 {% extends 'base.html' %}
-
-{% block title %}Dashboard | TailTales{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
 {% block content %}
   <h1>Dashboard</h1>
-  <p>Hello, {{ user.username }}.</p>
+  <p>Pick what you want to manage:</p>
 
-  <ul>
-    <li><a href="{% url 'pet-list' %}">My Pets</a></li>
-    <li><a href="#">My Contacts</a></li>
-    <li><a href="#">Appointments</a></li>
-    <li><a href="#">Preventive Care</a></li>
-  </ul>
+  <section class="feature-grid">
+    <a class="feature-card" href="{% url 'pet-list' %}">
+      <h3>My Pets</h3>
+      <p>Add, edit, and view your pets.</p>
+    </a>
+
+    <a class="feature-card" href="{% url 'contact-list' %}">
+      <h3>Contacts</h3>
+      <p>Vets, groomers, trainers, and more.</p>
+    </a>
+
+    <a class="feature-card" href="{% url 'appointment-list' %}">
+      <h3>Appointments</h3>
+      <p>Upcoming visits and completed tasks.</p>
+    </a>
+
+    <a class="feature-card" href="{% url 'preventivecare-list' %}">
+      <h3>Preventive Care</h3>
+      <p>Track flea, tick, deworming, heartworm.</p>
+    </a>
+  </section>
 {% endblock %}

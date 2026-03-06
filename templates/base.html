@@ -26,10 +26,6 @@
 
             {% if user.is_authenticated %}
                 <a class="secondary-btn" href="{% url 'dashboard' %}">Dashboard</a>
-                <a class="secondary-btn" href="{% url 'pet-list' %}">My Pets</a>
-                <a class="secondary-btn" href="{% url 'contact-list' %}">Contacts</a>
-                <a class="secondary-btn" href="{% url 'appointment-list' %}">Appointments</a>
-                <a class="secondary-btn" href="{% url 'preventivecare-list' %}">Preventive Care</a>
                 <form method="post" action="{% url 'logout' %}" style="display: inline;">
                     {% csrf_token %}
                     <button type="submit" class="secondary-btn">Logout</button>
