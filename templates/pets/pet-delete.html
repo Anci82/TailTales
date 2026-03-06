@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Pet{% endblock %}
+
+{% block content %}
 <h1>Delete Pet</h1>
 
 <p>Are you sure you want to delete {{ object.name }}?</p>
@@ -8,3 +13,4 @@
 </form>
 
 <a href="{% url 'pet-detail' object.pk %}">Cancel</a>
+{% endblock %}

@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ pet.name }}{% endblock %}
+
+{% block content %}
 <h1>{{ pet.name }}</h1>
 
 <p>Species: {{ pet.species }}</p>
@@ -9,3 +14,4 @@
 <a href="{% url 'pet-edit' pet.pk %}">Edit</a>
 <a href="{% url 'pet-delete' pet.pk %}">Delete</a>
 <a href="{% url 'pet-list' %}">Back to list</a>
+{% endblock %}

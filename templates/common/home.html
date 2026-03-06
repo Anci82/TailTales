@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | TailTales{% endblock %}
+
+{% block content %}
+  <h1>TailTales</h1>
+  <p>Your pet care tracker: pets, contacts, appointments, preventive care.</p>
+
+  {% if user.is_authenticated %}
+    <p>Welcome back, {{ user.username }}.</p>
+    <a href="{% url 'dashboard' %}">Go to Dashboard</a>
+    <a href="{% url 'pet-list' %}">My Pets</a>
+  {% else %}
+    <p>Please login or create an account to start tracking your pets.</p>
+    <a href="#">Register</a>
+    <a href="#">Login</a>
+  {% endif %}
+{% endblock %}

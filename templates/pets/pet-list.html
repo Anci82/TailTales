@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}My Pets{% endblock %}
+
+{% block content %}
 <h1>My Pets</h1>
 
 <a href="{% url 'pet-create' %}">Add Pet</a>
@@ -13,3 +18,4 @@
         <li>No pets yet.</li>
     {% endfor %}
 </ul>
+{% endblock %}
