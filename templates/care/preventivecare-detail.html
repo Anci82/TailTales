@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Preventive Care Details{% endblock %}
+
+{% block content %}
+<h1>{{ care_item.care_type }} - {{ care_item.pet.name }}</h1>
+
+<p>Product: {{ care_item.product_name }}</p>
+<p>Last given: {{ care_item.last_given_date }}</p>
+<p>Next due: {{ care_item.next_due_date }}</p>
+<p>Notes: {{ care_item.notes }}</p>
+
+<a href="{% url 'preventivecare-edit' care_item.pk %}">Edit</a>
+<a href="{% url 'preventivecare-delete' care_item.pk %}">Delete</a>
+<a href="{% url 'preventivecare-list' %}">Back</a>
+{% endblock %}

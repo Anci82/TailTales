@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Add Preventive Care{% endblock %}
+
+{% block content %}
+<h1>Add Preventive Care</h1>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Create</button>
+</form>
+
+<a href="{% url 'preventivecare-list' %}">Back</a>
+{% endblock %}

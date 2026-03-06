@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('TailTales.common.urls')),
     path('accounts/', include('TailTales.accounts.urls')),
     path('contacts/', include('TailTales.contacts.urls')),
+    path('care/', include('TailTales.care.urls')),
 ]

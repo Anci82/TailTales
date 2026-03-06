@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Preventive Care{% endblock %}
+
+{% block content %}
+<h1>Preventive Care</h1>
+
+<a href="{% url 'preventivecare-create' %}">Add Preventive Care</a>
+
+<ul>
+  {% for item in care_items %}
+    <li>
+      <a href="{% url 'preventivecare-detail' item.pk %}">
+        {{ item.care_type }} - {{ item.pet.name }}
+      </a>
+      (Next due: {{ item.next_due_date }})
+    </li>
+  {% empty %}
+    <li>No preventive care items yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

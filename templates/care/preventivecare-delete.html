@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Delete Preventive Care{% endblock %}
+
+{% block content %}
+<h1>Delete Preventive Care</h1>
+
+<p>
+  Are you sure you want to delete
+  "{{ object.care_type }}" for "{{ object.pet.name }}"?
+</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Confirm Delete</button>
+</form>
+
+<a href="{% url 'preventivecare-detail' object.pk %}">Cancel</a>
+{% endblock %}
