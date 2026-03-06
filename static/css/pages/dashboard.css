@@ -1,0 +1,48 @@
+/* Dashboard title */
+#dashboard-title {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 50px;
+  animation: heartBeat 6.5s infinite ease-in-out;
+}
+
+/* Dashboard tiles  */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 24px;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+
+.feature-card {
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.5);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.feature-card h3 {
+  margin: 0 0 6px 0;
+}
+
+.feature-card p {
+  margin: 0;
+  opacity: 0.85;
+}

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Alex+Brush&display=swap');
-
-
-
+@import url("pages/dashboard.css");
+@import url("pages/about.css");
+@import url("animations.css");
 /* ============================
    GENERAL RESET & LAYOUT
 ============================ */
@@ -342,6 +342,7 @@ header .header-right button:hover {
     font-size: 1.2rem;
     line-height: 1.5;
 }
+
 
 /* ============================
    DASHBOARD SECTION
