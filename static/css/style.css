@@ -238,7 +238,6 @@ textarea::placeholder {
     opacity: 0.6;
 }
 
-/* Checkbox fix for form.as_p */
 .form-card input[type="checkbox"] {
     width: auto;
     display: inline-block;
@@ -420,33 +419,103 @@ header.header-wrapper.hidden {
     transform: translateY(-100%);
 }
 /* ============================
+   DASHBOARD HERO
+============================ */
+.dashboard-hero {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    min-height: calc(100vh - 130px);
+    background-color: rgb(149, 183, 199);
+}
+
+.dashboard-hero-content {
+    background: linear-gradient(135deg, rgba(211, 81, 0, 0.92), rgb(216, 148, 24));
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dashboard-hero-image {
+    height: 100%;
+}
+
+.dashboard-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#dashboard-title {
+    color: white;
+    text-align: center;
+    margin: 0 0 2rem 0;
+    font-size: 2.2rem;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.feature-card {
+    display: block;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 1.25rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.feature-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: rgba(211, 81, 0, 0.92);
+    font-size: 1.5rem;
+}
+
+.feature-card p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+/* ============================
    MAIN WRAPPER & BACKGROUND
 ============================ */
 .main-wrapper {
     position: relative;
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 130px);
     margin-top: 130px;
 }
 
-.main-wrapper::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../images/background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-    z-index: 0;
-    border-radius: 0;
-}
+/*.main-wrapper::before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    inset: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-image: url('../images/background.png');*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*    opacity: 0.5;*/
+/*    z-index: 0;*/
+/*    border-radius: 0;*/
+/*}*/
 
-.main-wrapper > * {
-    position: relative;
-    z-index: 1;
-}
+/*.main-wrapper > * {*/
+/*    position: relative;*/
+/*    z-index: 1;*/
+/*}*/
 
 /* ============================
    WELCOME SCREEN
@@ -493,55 +562,6 @@ header.header-wrapper.hidden {
 .home-actions {
     margin-top: 1.5rem;
 }
-/*.welcome-section {*/
-/*    width: 100%;*/
-/*    min-height: 100vh;*/
-/*    position: relative;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    text-align: center;*/
-/*    overflow: hidden;*/
-/*}*/
-
-/*.welcome-background img {*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    object-fit: cover;*/
-/*    filter: brightness(0.9);*/
-/*    z-index: 1;*/
-/*    border-radius: 0;*/
-/*}*/
-
-/*.welcome-text {*/
-/*    position: absolute;*/
-/*    top: 50%;*/
-/*    left: 20%;*/
-/*    transform: translate(-50%, -50%);*/
-/*    z-index: 2;*/
-/*    max-width: 500px;*/
-/*    color: saddlebrown;*/
-/*    text-align: center;*/
-/*    padding: 1rem;*/
-/*    font-weight: bold;*/
-/*}*/
-
-/*.welcome-text h2 {*/
-/*    font-family: 'Alex Brush', cursive;*/
-/*    font-weight: 400;*/
-/*    font-style: normal;*/
-/*    font-size: 3rem;*/
-/*    margin-bottom: 1rem;*/
-/*}*/
-
-/*.welcome-text p {*/
-/*    font-size: 1.2rem;*/
-/*    line-height: 1.5;*/
-/*}*/
 
 /* ============================
    FOOTER
@@ -629,5 +649,17 @@ ul li a:focus {
 
     .main-wrapper {
         margin-top: 180px;
+    }
+    .dashboard-hero {
+    grid-template-columns: 1fr;
+    }
+
+    .dashboard-hero-image {
+    order: -1;
+    min-height: 280px;
+    }
+
+    .feature-grid {
+    grid-template-columns: 1fr;
     }
 }

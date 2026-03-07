@@ -1,29 +1,38 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-    <h1 id="dashboard-title">Choose what you want to manage:</h1>
+<section class="dashboard-hero">
+    <div class="dashboard-hero-content">
+        <h1 id="dashboard-title">Choose what you want to manage:</h1>
 
+        <section class="feature-grid">
+            <a class="feature-card" href="{% url 'pet-list' %}">
+                <h3>My Pets</h3>
+                <p>Add, edit, and view your pets.</p>
+            </a>
 
-  <section class="feature-grid">
-    <a class="feature-card" href="{% url 'pet-list' %}">
-      <h3>My Pets</h3>
-      <p>Add, edit, and view your pets.</p>
-    </a>
+            <a class="feature-card" href="{% url 'contact-list' %}">
+                <h3>Contacts</h3>
+                <p>Vets, groomers, trainers, and more.</p>
+            </a>
 
-    <a class="feature-card" href="{% url 'contact-list' %}">
-      <h3>Contacts</h3>
-      <p>Vets, groomers, trainers, and more.</p>
-    </a>
+            <a class="feature-card" href="{% url 'appointment-list' %}">
+                <h3>Appointments</h3>
+                <p>Upcoming visits and completed tasks.</p>
+            </a>
 
-    <a class="feature-card" href="{% url 'appointment-list' %}">
-      <h3>Appointments</h3>
-      <p>Upcoming visits and completed tasks.</p>
-    </a>
+            <a class="feature-card" href="{% url 'preventivecare-list' %}">
+                <h3>Preventive Care</h3>
+                <p>Track flea, tick, deworming, heartworm.</p>
+            </a>
+        </section>
+    </div>
 
-    <a class="feature-card" href="{% url 'preventivecare-list' %}">
-      <h3>Preventive Care</h3>
-      <p>Track flea, tick, deworming, heartworm.</p>
-    </a>
-  </section>
+    <div class="dashboard-hero-image">
+        <img src="{% static 'images/dashboard-side.png' %}" alt="Pets dashboard image">
+    </div>
+</section>
 {% endblock %}
