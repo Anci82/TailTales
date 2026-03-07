@@ -5,11 +5,12 @@ from TailTales.pets.models import Pet
 class PetBaseForm(forms.ModelForm):
     class Meta:
         model = Pet
-        fields = ('name', 'species', 'breed', 'age', 'weight', 'photo_url')
+        fields = ('name', 'species', 'breed', 'age', 'weight', 'photo_url', 'show_in_gallery')
         labels = {
             'age': 'Age (years)',
             'weight': 'Weight (kg)',
             'photo_url': 'Photo URL',
+            'show_in_gallery': 'Show in public gallery',
         }
         widgets = {
             'age': forms.NumberInput(attrs={'min': 0, 'placeholder': 'e.g. 3'}),

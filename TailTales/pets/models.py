@@ -31,7 +31,7 @@ class Pet(models.Model):
     )
 
     species = models.CharField(
-        max_length=3,
+        max_length=20,
         choices=SPECIES_CHOICES,
     )
 
@@ -53,6 +53,11 @@ class Pet(models.Model):
         max_length=PHOTO_URL_MAX_LENGTH,
         blank=True,
         null=True,
+    )
+
+    show_in_gallery = models.BooleanField(
+        default=True,
+        verbose_name='Show in public gallery',
     )
 
     def __str__(self):

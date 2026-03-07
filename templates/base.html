@@ -23,6 +23,7 @@
         <nav class="btn-group">
             <a class="secondary-btn" href="{% url 'home' %}">Home</a>
             <a class="secondary-btn" href="{% url 'about' %}">About</a>
+            <a class="secondary-btn" href="{% url 'pet-gallery' %}">Gallery</a>
 
             {% if user.is_authenticated %}
                 <a class="secondary-btn" href="{% url 'dashboard' %}">Dashboard</a>

@@ -1,5 +1,4 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.exceptions import PermissionDenied
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -55,3 +54,29 @@ class PetDeleteView(LoginRequiredMixin, views.DeleteView):
 
     def get_queryset(self):
         return Pet.objects.filter(owner=self.request.user)
+
+
+class PetGalleryView(views.ListView):
+    model = Pet
+    template_name = 'pets/pet-gallery.html'
+    context_object_name = 'pets'
+
+    def get_queryset(self):
+        queryset = Pet.objects.filter(
+            show_in_gallery=True,
+        ).exclude(
+            photo_url__isnull=True,
+        ).exclude(
+            photo_url='',
+        )
+
+        sort = self.request.GET.get('sort')
+
+        if sort == 'name_desc':
+            queryset = queryset.order_by('-name')
+        elif sort == 'species':
+            queryset = queryset.order_by('species', 'name')
+        else:
+            queryset = queryset.order_by('name')
+
+        return queryset

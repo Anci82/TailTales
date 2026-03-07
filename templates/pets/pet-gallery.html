@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Pet Gallery{% endblock %}
+
+{% block content %}
+<section class="form-section">
+    <div class="form-card">
+        <h1>Pet Gallery</h1>
+
+        <form method="get" class="gallery-sort-form">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="sort" onchange="this.form.submit()">
+                <option value="name" {% if request.GET.sort == 'name' or not request.GET.sort %}selected{% endif %}>Name A-Z</option>
+                <option value="name_desc" {% if request.GET.sort == 'name_desc' %}selected{% endif %}>Name Z-A</option>
+                <option value="species" {% if request.GET.sort == 'species' %}selected{% endif %}>Species A-Z</option>
+            </select>
+        </form>
+
+        <div class="gallery-grid">
+            {% for pet in pets %}
+                <article class="gallery-card">
+                    <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" class="gallery-image">
+
+                    <h3>{{ pet.name }}</h3>
+                    <p><strong>Species:</strong> {{ pet.species }}</p>
+
+                    {% if pet.breed %}
+                        <p><strong>Breed:</strong> {{ pet.breed }}</p>
+                    {% endif %}
+                </article>
+            {% empty %}
+                <p>No pets in the gallery yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -236,7 +236,45 @@ textarea::placeholder {
     display: block;
     margin: 0 auto;
 }
+/*PET GALLERY*/
+.gallery-sort-form {
+    margin-bottom: 1.5rem;
+}
 
+.gallery-sort-form label {
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+
+.gallery-sort-form select {
+    padding: 0.45rem 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 0.75rem;
+}
 
 /* ============================
    HEADER (COMPACT & STACKED FORM)
