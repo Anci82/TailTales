@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
+
 {% block title %}Delete Preventive Care{% endblock %}
 
 {% block content %}
-<h1>Delete Preventive Care</h1>
+<section class="form-section">
+    <div class="form-card">
+        <h1>Delete Preventive Care</h1>
 
-<p>
-  Are you sure you want to delete
-  "{{ object.care_type }}" for "{{ object.pet.name }}"?
-</p>
+        <p>
+            Are you sure you want to delete
+            <strong>{{ object.care_type }}</strong> for
+            <strong>{{ object.pet.name }}</strong>?
+        </p>
 
-<form method="post">
-  {% csrf_token %}
-  <button type="submit">Confirm Delete</button>
-</form>
+        <form method="post">
+            {% csrf_token %}
 
-<a href="{% url 'preventivecare-detail' object.pk %}">Cancel</a>
+            <div class="form-actions">
+                <button type="submit" class="primary-btn cancel">Confirm Delete</button>
+                <a class="primary-btn" href="{% url 'preventivecare-detail' object.pk %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
 {% endblock %}

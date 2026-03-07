@@ -1,19 +1,38 @@
 {% extends 'base.html' %}
+
 {% block title %}My Contacts{% endblock %}
 
 {% block content %}
-<h1>My Service Contacts</h1>
+<section class="form-section">
+    <div class="contact-list-card">
+        <h1>My Service Contacts</h1>
 
-<a href="{% url 'contact-create' %}">Add Contact</a>
+        <div class="contact-list-actions">
+            <a class="primary-btn" href="{% url 'contact-create' %}">Add New Contact</a>
+        </div>
 
-<ul>
-  {% for c in contacts %}
-    <li>
-      <a href="{% url 'contact-detail' c.pk %}">{{ c.name }}</a>
-      ({{ c.contact_type }})
-    </li>
-  {% empty %}
-    <li>No contacts yet.</li>
-  {% endfor %}
-</ul>
+        <div class="my-contacts-grid">
+            {% for c in contacts %}
+                <article class="my-contact-card">
+                    <h3>{{ c.name }}</h3>
+                    <p><strong>Type:</strong> {{ c.contact_type }}</p>
+
+                    {% if c.phone_number %}
+                        <p><strong>Phone:</strong> {{ c.phone_number }}</p>
+                    {% endif %}
+
+                    {% if c.email %}
+                        <p><strong>Email:</strong> {{ c.email }}</p>
+                    {% endif %}
+
+                    <div class="my-contact-card-actions">
+                        <a class="secondary-btn" href="{% url 'contact-detail' c.pk %}">View Details</a>
+                    </div>
+                </article>
+            {% empty %}
+                <p class="empty-message">No contacts yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}

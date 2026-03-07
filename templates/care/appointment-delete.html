@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
+
 {% block title %}Delete Appointment{% endblock %}
+
 {% block content %}
-<h1>Delete Appointment</h1>
-<p>Are you sure you want to delete "{{ object.title }}"?</p>
-<form method="post">
-  {% csrf_token %}
-  <button type="submit">Confirm</button>
-</form>
-<a href="{% url 'appointment-detail' object.pk %}">Cancel</a>
+<section class="form-section">
+    <div class="form-card">
+        <h1>Delete Appointment</h1>
+
+        <p>Are you sure you want to delete <strong>{{ object.title }}</strong>?</p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-actions">
+                <button type="submit" class="primary-btn cancel">Confirm Delete</button>
+                <a class="primary-btn" href="{% url 'appointment-detail' object.pk %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
 {% endblock %}

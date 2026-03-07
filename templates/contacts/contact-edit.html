@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
+
 {% block title %}Edit Contact{% endblock %}
 
 {% block content %}
-<h1>Edit Contact</h1>
+<section class="form-page">
+    <div class="form-card">
+        <h1>Edit Contact</h1>
 
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Save</button>
-</form>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="form-actions">
+                <button type="submit" class="primary-btn">Save</button>
+                <a class="primary-btn cancel" href="{% url 'contact-detail' object.pk %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
 {% endblock %}

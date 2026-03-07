@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
+
 {% block title %}Edit Preventive Care{% endblock %}
 
 {% block content %}
-<h1>Edit Preventive Care</h1>
+<section class="form-page">
+    <div class="form-card">
+        <h1>Edit Preventive Care</h1>
 
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Save</button>
-</form>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
 
-<a href="{% url 'preventivecare-detail' object.pk %}">Cancel</a>
+            <div class="form-actions">
+                <button type="submit" class="primary-btn">Save</button>
+                <a class="primary-btn cancel" href="{% url 'preventivecare-detail' object.pk %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
 {% endblock %}
