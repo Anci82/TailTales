@@ -3,11 +3,18 @@
 {% block title %}Add Pet{% endblock %}
 
 {% block content %}
-<h1>Add Pet</h1>
+    <section class="form-page">
+        <div class="form-card">
+            <h1>Add Pet</h1>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create</button>
-</form>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-actions">
+                    <button type="submit" class="primary-btn">Create</button>
+                    <a class="primary-btn cancel" href="{% url 'pet-list' %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </section>
 {% endblock %}

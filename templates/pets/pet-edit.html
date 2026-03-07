@@ -1,13 +1,22 @@
+
 {% extends 'base.html' %}
 
-{% block title %}Edit Pet{% endblock %}
+{% block title %}Edit {{ pet.name }}{% endblock %}
 
 {% block content %}
-<h1>Edit Pet</h1>
+<section class="form-section">
+    <div class="form-card">
+        <h1>Edit {{ pet.name }}</h1>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="form-actions">
+                <button type="submit" class="primary-btn">Save</button>
+                <a class="primary-btn cancel" href="{% url 'pet-detail' pet.pk %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
 {% endblock %}

@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}Delete Pet{% endblock %}
+{% block title %}Delete {{ pet.name }}{% endblock %}
 
 {% block content %}
-<h1>Delete Pet</h1>
+<section class="form-section">
+    <div class="form-card">
+        <h1>Delete {{ pet.name }}</h1>
+        <p>Are you sure you want to delete this pet?</p>
 
-<p>Are you sure you want to delete {{ object.name }}?</p>
-
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Confirm Delete</button>
-</form>
-
-<a href="{% url 'pet-detail' object.pk %}">Cancel</a>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-actions">
+                <button type="submit" class="primary-btn">Delete</button>
+                <a class="primary-btn cancel" href="{% url 'pet-detail' pet.pk %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
 {% endblock %}
