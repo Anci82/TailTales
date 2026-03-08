@@ -1,7 +1,11 @@
-/* About page  */
+/* About page */
 .about-page {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding: 40px 16px;
+    min-height: calc(100vh - 130px);
+    background-image: url("../../images/general-bkg.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
 }
 
 /* About card */
@@ -11,19 +15,21 @@
     padding: 80px 16px;
     border-radius: 14px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(2px);
 }
 
 .about-wrapper h1 {
     margin-bottom: 20px;
     font-size: 2.26rem;
     text-align: center;
-
 }
+
 .about-wrapper h1 span {
     display: inline-block;
     animation: heartBeat 3.5s infinite ease-in-out;
 }
+
 .about-wrapper p {
     line-height: 1.6;
     text-align: center;

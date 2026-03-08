@@ -27,7 +27,7 @@
         <nav class="header-nav">
             <a href="{% url 'home' %}">Home</a>
             {% if user.is_authenticated %}
-            <a href="{% url 'dashboard' %}">My Pets</a>
+            <a href="{% url 'dashboard' %}">TailTales Central</a>
             {% endif %}
             <a href="{% url 'pet-gallery' %}">Gallery</a>
             <a href="{% url 'about' %}">About us</a>
@@ -38,7 +38,7 @@
     <div class="header-right">
         <div class="btn-group auth-links">
             {% if user.is_authenticated %}
-                <a class="primary-btn" href="{% url 'dashboard' %}">My Pets</a>
+{#                <a class="primary-btn" href="{% url 'dashboard' %}">TailTales Central</a>#}
                 <form method="post" action="{% url 'logout' %}" style="display: inline;">
                     {% csrf_token %}
                     <button type="submit" class="secondary-btn">Logout</button>

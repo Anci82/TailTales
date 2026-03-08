@@ -19,15 +19,14 @@
         {% if user.is_authenticated %}
             <p>Welcome back, {{ user.username }}.</p>
             <div class="form-actions home-actions">
+                <a class="primary-btn" href="{% url 'dashboard' %}">TailTales Central</a>
                 <a class="primary-btn" href="{% url 'pet-list' %}">My Pets</a>
-                <a class="secondary-btn" href="{% url 'dashboard' %}">Dashboard</a>
             </div>
         {% else %}
             <p>Create an account or log in to start building your pet care space.</p>
             <div class="form-actions home-actions">
                 <a class="primary-btn" href="{% url 'login' %}">Login</a>
                 <a class="primary-btn" href="{% url 'register' %}">Register</a>
-
             </div>
         {% endif %}
     </div>
