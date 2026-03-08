@@ -6,31 +6,37 @@
 
 
 {% block content %}
-<section class="home-hero">
-    <div class="home-hero-image">
-        <img src="{% static 'images/home-background.png' %}" alt="TailTales welcome image">
-    </div>
+    <section class="home-hero">
+        <div class="home-hero-image">
+            <img src="{% static 'images/home-background.png' %}" alt="TailTales welcome image">
+        </div>
 
-    <div class="home-hero-content">
-        <h2>Keep all your pet care in one happy place</h2>
-        <p>
-            TailTales helps you keep track of your pets, useful contacts, appointments,
-            and preventive care so everything important stays together.
-        </p>
+        <div class="home-hero-content">
+            <div class="daily-tip-box">
+                <p class="daily-tip-label">Fun Facts:</p>
+                <p id="tip-of-the-day" class="daily-tip-text">Loading a pet tip...</p>
+            </div>
 
-        {% if user.is_authenticated %}
-            <p>Welcome back, {{ user.username }}.</p>
-            <div class="form-actions home-actions">
-                <a class="primary-btn" href="{% url 'dashboard' %}">TailTales Central</a>
-                <a class="primary-btn" href="{% url 'pet-list' %}">My Pets</a>
-            </div>
-        {% else %}
-            <p>Create an account or log in to start building your pet care space.</p>
-            <div class="form-actions home-actions">
-                <a class="primary-btn" href="{% url 'login' %}">Login</a>
-                <a class="primary-btn" href="{% url 'register' %}">Register</a>
-            </div>
-        {% endif %}
-    </div>
-</section>
+            <h2>Keep all your pet care in one happy place</h2>
+            <p>
+                TailTales helps you keep track of your pets, useful contacts, appointments,
+                and preventive care so everything important stays together.
+            </p>
+
+            {% if user.is_authenticated %}
+                <p>Welcome back, {{ user.username }}.</p>
+                <div class="form-actions home-actions">
+                    <a class="primary-btn" href="{% url 'dashboard' %}">TailTales Central</a>
+                    <a class="primary-btn" href="{% url 'pet-list' %}">My Pets</a>
+                </div>
+            {% else %}
+                <p>Create an account or log in to start building your pet care space.</p>
+                <div class="form-actions home-actions">
+                    <a class="primary-btn" href="{% url 'login' %}">Login</a>
+                    <a class="primary-btn" href="{% url 'register' %}">Register</a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    <script src="{% static 'js/tip-of-day.js' %}"></script>
 {% endblock %}

@@ -1,0 +1,45 @@
+/* ============================
+   WELCOME SCREEN
+============================ */
+.home-hero {
+    display: grid;
+    grid-template-columns: 6.5fr 3.5fr;
+    min-height: calc(100vh - 120px);
+    background-color: rgb(149, 183, 199);
+}
+
+.home-hero-image {
+    height: 100%;
+}
+
+.home-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.home-hero-content {
+    background: linear-gradient(135deg, rgba(211, 81, 0, 0.92), rgb(216, 148, 24));
+    color: white;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-hero-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.home-hero-content p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.home-actions {
+    margin-top: 1.5rem;
+}

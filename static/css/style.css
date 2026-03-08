@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Alex+Brush&display=swap');
 @import url("pages/dashboard.css");
 @import url("pages/contacts.css");
+@import url("pages/home.css");
 @import url("pages/pets.css");
 @import url("pages/gallery.css");
 @import url("pages/about.css");
@@ -200,8 +201,8 @@ header.header-wrapper {
 }
 
 .header-left .logo-icon {
-    width: 42px;
-    height: 42px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
     border-radius: 50%;
 }
@@ -209,11 +210,11 @@ header.header-wrapper {
 header .header-left h1 {
     font-family: 'Alex Brush', cursive;
     font-weight: 400;
-    font-size: 3rem;
+    font-size: 3.8rem;
     margin: 0;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
     letter-spacing: 1px;
+    color: antiquewhite;
 }
 
 .header-center {
@@ -297,51 +298,7 @@ header.header-wrapper.hidden {
 
 
 
-/* ============================
-   WELCOME SCREEN
-============================ */
-.home-hero {
-    display: grid;
-    grid-template-columns: 7fr 3fr;
-    min-height: calc(100vh - 120px);
-    background-color: rgb(149, 183, 199);
-}
 
-.home-hero-image {
-    height: 100%;
-}
-
-.home-hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.home-hero-content {
-    background: linear-gradient(135deg, rgba(211, 81, 0, 0.92), rgb(216, 148, 24));
-    color: white;
-    padding: 3rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.home-hero-content h2 {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-    color: white;
-}
-
-.home-hero-content p {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.home-actions {
-    margin-top: 1.5rem;
-}
 
 /* ============================
    FOOTER
