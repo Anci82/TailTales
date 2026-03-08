@@ -1,13 +1,4 @@
 /* About page */
-.about-page {
-    padding: 40px 16px;
-    min-height: calc(100vh - 130px);
-    background-image: url("../../images/general-bkg.png");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-}
-
 /* About card */
 .about-wrapper {
     max-width: 900px;

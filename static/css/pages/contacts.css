@@ -1,0 +1,55 @@
+/* ============================
+   MY CONTACTS LIST
+============================ */
+.contact-list-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 22px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, #dfdad0, rgb(149, 183, 199));
+}
+
+.contact-list-card h1 {
+    text-align: center;
+    margin: 0 0 18px 0;
+    color: darkslateblue;
+}
+
+.contact-list-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.my-contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.my-contact-card {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 14px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.my-contact-card h3 {
+    margin: 0.5rem 0 0.75rem 0;
+    color: rgba(211, 81, 0, 0.92);
+    font-size: 1.5rem;
+}
+
+.my-contact-card p {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.05rem;
+    word-break: break-word;
+}
+
+.my-contact-card-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}

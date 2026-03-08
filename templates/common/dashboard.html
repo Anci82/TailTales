@@ -1,38 +1,52 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}TailTales Central{% endblock %}
+{% block main_class %}dashboard-page{% endblock %}
 
 {% block content %}
 <section class="dashboard-hero">
     <div class="dashboard-hero-content">
+        <p class="dashboard-welcome">Welcome back, {{ request.user.username }}</p>
         <h1 id="dashboard-title">Choose what you want to manage:</h1>
 
         <section class="feature-grid">
             <a class="feature-card" href="{% url 'pet-list' %}">
-                <h3>My Pets</h3>
+                <div class="feature-card-header">
+                    <span class="feature-icon">🐾</span>
+                    <h3>My Pets</h3>
+                </div>
                 <p>Add, edit, and view your pets.</p>
             </a>
 
             <a class="feature-card" href="{% url 'contact-list' %}">
-                <h3>Contacts</h3>
+                <div class="feature-card-header">
+                    <span class="feature-icon">📒</span>
+                    <h3>Contacts</h3>
+                </div>
                 <p>Vets, groomers, trainers, and more.</p>
             </a>
 
             <a class="feature-card" href="{% url 'appointment-list' %}">
-                <h3>Appointments</h3>
+                <div class="feature-card-header">
+                    <span class="feature-icon">📅</span>
+                    <h3>Appointments</h3>
+                </div>
                 <p>Upcoming visits and completed tasks.</p>
             </a>
 
             <a class="feature-card" href="{% url 'preventivecare-list' %}">
-                <h3>Preventive Care</h3>
-                <p>Track flea, tick, deworming, heartworm.</p>
+                <div class="feature-card-header">
+                    <span class="feature-icon">🩺</span>
+                    <h3>Preventive Care</h3>
+                </div>
+                <p>Track flea, tick, deworming, and heartworm care.</p>
             </a>
         </section>
     </div>
 
     <div class="dashboard-hero-image">
-        <img src="{% static 'images/dashboard-side.png' %}" alt="Pets dashboard image">
+        <img src="{% static 'images/dashboard-side.png' %}" alt="TailTales dashboard illustration">
     </div>
 </section>
 {% endblock %}

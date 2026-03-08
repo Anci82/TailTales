@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
+
 {% block title %}Login{% endblock %}
 
 {% block content %}
-  <h1>Login</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+    <section class="form-page">
+        <div class="form-card">
+            <h1>Login</h1>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <div class="form-actions">
+                    <button type="submit" class="primary-btn">Login</button>
+                    <a class="secondary-btn" href="{% url 'home' %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </section>
 {% endblock %}

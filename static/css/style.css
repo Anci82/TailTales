@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Alex+Brush&display=swap');
 @import url("pages/dashboard.css");
+@import url("pages/contacts.css");
+@import url("pages/pets.css");
+@import url("pages/gallery.css");
 @import url("pages/about.css");
+@import url("common/forms.css");
 @import url("animations.css");
+
 
 /* ============================
    GENERAL RESET & LAYOUT
@@ -158,159 +163,9 @@ button.secondary-btn:hover {
     gap: 15px;
 }
 
-/* ============================
-   FORMS STYLING
-============================ */
-.form-section,
-.form-page {
-    padding: 40px 16px;
-}
 
-.form-card {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 28px 22px;
-    border-radius: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    background: linear-gradient(135deg, #dfdad0, rgb(149, 183, 199));
-}
 
-.form-card h1 {
-    text-align: center;
-    margin: 0 0 18px 0;
-    color: darkslateblue;
-}
 
-.form-card form p {
-    margin: 0 0 14px 0;
-}
-
-.form-card label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 700;
-}
-
-.form-card input,
-.form-card select,
-.form-card textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.18);
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.form-card textarea {
-    min-height: 110px;
-    resize: vertical;
-}
-
-.form-card .helptext {
-    display: block;
-    margin-top: 6px;
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-.form-card .errorlist {
-    list-style: none;
-    padding: 0;
-    margin: 8px 0 0 0;
-    color: #b00020;
-    font-weight: 700;
-}
-
-.form-actions {
-    display: flex;
-    gap: 50px;
-    margin-top: 30px;
-}
-
-.form-actions .primary-btn,
-.form-actions .secondary-btn {
-    flex: 1;
-    text-align: center;
-}
-
-input::placeholder,
-textarea::placeholder {
-    opacity: 0.6;
-}
-
-.form-card input[type="checkbox"] {
-    width: auto;
-    display: inline-block;
-    margin-left: 0.5rem;
-    vertical-align: middle;
-}
-
-.form-card p:has(input[type="checkbox"]) label {
-    display: inline-block;
-    margin-bottom: 0;
-}
-
-/* ============================
-   PET DETAIL IMAGE
-============================ */
-.pet-image-wrapper {
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.pet-image {
-    width: 100%;
-    max-width: 320px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    display: block;
-    margin: 0 auto;
-}
-
-/* ============================
-   PET GALLERY
-============================ */
-.gallery-sort-form {
-    margin-bottom: 1.5rem;
-}
-
-.gallery-sort-form label {
-    font-weight: 700;
-    margin-right: 0.5rem;
-}
-
-.gallery-sort-form select {
-    padding: 0.45rem 0.7rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    width: auto;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.gallery-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    text-align: center;
-}
-
-.gallery-image {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-    margin-bottom: 0.75rem;
-}
 
 /* ============================
    HEADER
@@ -418,209 +273,7 @@ header .header-left h1 {
 header.header-wrapper.hidden {
     transform: translateY(-100%);
 }
-/* ============================
-   MY PETS LIST
-============================ */
-.pet-list-card {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 28px 22px;
-    border-radius: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    background: linear-gradient(135deg, #dfdad0, rgb(149, 183, 199));
-}
 
-.pet-list-card h1 {
-    text-align: center;
-    margin: 0 0 18px 0;
-    color: darkslateblue;
-}
-
-.pet-list-actions {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-.my-pets-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-}
-
-.my-pet-card {
-    background: rgba(255, 255, 255, 0.92);
-    border-radius: 14px;
-    padding: 1rem;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.my-pet-image {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-    margin-bottom: 0.75rem;
-}
-
-.my-pet-image-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(149, 183, 199, 0.25);
-    color: #555;
-    font-weight: bold;
-}
-
-.my-pet-card h3 {
-    margin: 0.5rem 0;
-    color: rgba(211, 81, 0, 0.92);
-    font-size: 1.5rem;
-}
-
-.my-pet-card p {
-    margin: 0 0 1rem 0;
-    font-size: 1.05rem;
-}
-
-.my-pet-card-actions {
-    display: flex;
-    justify-content: center;
-}
-
-.empty-message {
-    text-align: center;
-    font-size: 1.2rem;
-    grid-column: 1 / -1;
-    margin: 1rem 0 0 0;
-}
-/* ============================
-   MY CONTACTS LIST
-============================ */
-.contact-list-card {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 28px 22px;
-    border-radius: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    background: linear-gradient(135deg, #dfdad0, rgb(149, 183, 199));
-}
-
-.contact-list-card h1 {
-    text-align: center;
-    margin: 0 0 18px 0;
-    color: darkslateblue;
-}
-
-.contact-list-actions {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-.my-contacts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-}
-
-.my-contact-card {
-    background: rgba(255, 255, 255, 0.92);
-    border-radius: 14px;
-    padding: 1rem;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.my-contact-card h3 {
-    margin: 0.5rem 0 0.75rem 0;
-    color: rgba(211, 81, 0, 0.92);
-    font-size: 1.5rem;
-}
-
-.my-contact-card p {
-    margin: 0 0 0.75rem 0;
-    font-size: 1.05rem;
-    word-break: break-word;
-}
-
-.my-contact-card-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
-/* ============================
-   DASHBOARD HERO
-============================ */
-.dashboard-hero {
-    display: grid;
-    grid-template-columns: 4fr 6fr;
-    min-height: calc(100vh - 130px);
-    background-color: rgb(149, 183, 199);
-}
-
-.dashboard-hero-content {
-    background: linear-gradient(135deg, rgba(211, 81, 0, 0.92), rgb(216, 148, 24));
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.dashboard-hero-image {
-    height: 100%;
-}
-
-.dashboard-hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-#dashboard-title {
-    color: white;
-    text-align: center;
-    margin: 0 0 2rem 0;
-    font-size: 2.2rem;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-}
-
-.feature-card {
-    display: block;
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
-    padding: 1.25rem;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
-}
-
-.feature-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    color: rgba(211, 81, 0, 0.92);
-    font-size: 1.5rem;
-}
-
-.feature-card p {
-    margin: 0;
-    font-size: 1.05rem;
-    line-height: 1.4;
-}
 /* ============================
    MAIN WRAPPER & BACKGROUND
 ============================ */
@@ -629,26 +282,20 @@ header.header-wrapper.hidden {
     min-height: calc(100vh - 130px);
     margin-top: 130px;
 }
+.soft-pet-page {
+    padding: 40px 16px;
+    background-image: url("../images/general-bkg.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
 
-/*.main-wrapper::before {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    inset: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    background-image: url('../images/background.png');*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    background-repeat: no-repeat;*/
-/*    opacity: 0.5;*/
-/*    z-index: 0;*/
-/*    border-radius: 0;*/
-/*}*/
+.home-page,
+.dashboard-page {
+    padding: 0;
+}
 
-/*.main-wrapper > * {*/
-/*    position: relative;*/
-/*    z-index: 1;*/
-/*}*/
+
 
 /* ============================
    WELCOME SCREEN
