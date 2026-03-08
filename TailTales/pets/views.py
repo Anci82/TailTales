@@ -76,6 +76,8 @@ class PetGalleryView(views.ListView):
             queryset = queryset.order_by('-name')
         elif sort == 'species':
             queryset = queryset.order_by('species', 'name')
+        elif sort == 'species_desc':
+            queryset = queryset.order_by('-species', 'name')
         else:
             queryset = queryset.order_by('name')
 

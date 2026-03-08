@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{% block title %}TailTales{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     {% block extra_css %}{% endblock %}
 </head>
 
@@ -20,14 +20,14 @@
     </div>
 
     <div class="header-center">
-{#        <div class="header-tip">#}
-{#            <p><strong>Tip of the day:</strong> Cats sleep around 12 to 16 hours a day, and dogs can learn over 100 words and gestures.</p>#}
-{#        </div>#}
+        {#        <div class="header-tip">#}
+        {#            <p><strong>Tip of the day:</strong> Cats sleep around 12 to 16 hours a day, and dogs can learn over 100 words and gestures.</p>#}
+        {#        </div>#}
 
         <nav class="header-nav">
             <a href="{% url 'home' %}">Home</a>
             {% if user.is_authenticated %}
-            <a href="{% url 'dashboard' %}">TailTales Central</a>
+                <a href="{% url 'dashboard' %}">TailTales Central</a>
             {% endif %}
             <a href="{% url 'pet-gallery' %}">Gallery</a>
             <a href="{% url 'about' %}">About us</a>
@@ -38,7 +38,7 @@
     <div class="header-right">
         <div class="btn-group auth-links">
             {% if user.is_authenticated %}
-{#                <a class="primary-btn" href="{% url 'dashboard' %}">TailTales Central</a>#}
+                {#                <a class="primary-btn" href="{% url 'dashboard' %}">TailTales Central</a>#}
                 <form method="post" action="{% url 'logout' %}" style="display: inline;">
                     {% csrf_token %}
                     <button type="submit" class="secondary-btn">Logout</button>
@@ -66,17 +66,39 @@
                         RSPCA Advice
                     </a>
                 </li>
+                <li>
+                    <a href="https://www.bluecross.org.uk/advice"
+                       target="_blank" rel="noopener noreferrer">
+                        Blue Cross Pet Advice
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.petpoisonhelpline.com/pet-owners/"
+                       target="_blank" rel="noopener noreferrer">
+                        Pet Poison Helpline
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.vets-now.com/pet-care-advice/"
+                       target="_blank" rel="noopener noreferrer">
+                        Vets Now Pet Care Advice
+                    </a>
+                </li>
             </ul>
         </div>
 
         <div class="footer-right">
             <h4>Contact</h4>
             <ul>
-                <li>
-                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
-                        GitHub
-                    </a>
-                </li>
+                <ul>
+                    <li>
+                        <a href="https://github.com/Anci82" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </li>
+                    <li><a href="mailto:anashuttleworth@hotmail.com">Email Me</a></li>
+                    <li>
+                        <a href="https://donationlink.com" target="_blank" rel="noopener noreferrer">Donate ❤️</a>
+                    </li>
+                </ul>
             </ul>
         </div>
     </div>

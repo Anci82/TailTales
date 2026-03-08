@@ -14,6 +14,7 @@
                 <option value="name" {% if request.GET.sort == 'name' or not request.GET.sort %}selected{% endif %}>Name A-Z</option>
                 <option value="name_desc" {% if request.GET.sort == 'name_desc' %}selected{% endif %}>Name Z-A</option>
                 <option value="species" {% if request.GET.sort == 'species' %}selected{% endif %}>Species A-Z</option>
+                <option value="species_desc" {% if request.GET.sort == 'species' %}selected{% endif %}>Species Z-A</option>
             </select>
         </form>
 
