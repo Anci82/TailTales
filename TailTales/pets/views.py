@@ -60,7 +60,7 @@ class PetGalleryView(views.ListView):
     model = Pet
     template_name = 'pets/pet-gallery.html'
     context_object_name = 'pets'
-    paginate_by = 2
+    paginate_by = 6
 
     def get_queryset(self):
         queryset = Pet.objects.filter(
@@ -71,14 +71,16 @@ class PetGalleryView(views.ListView):
             photo_url='',
         )
 
-        sort = self.request.GET.get('sort')
+        filter_by = self.request.GET.get('filter', 'all')
+        sort = self.request.GET.get('sort', 'name')
+
+        if filter_by == 'dog':
+            queryset = queryset.filter(species__iexact='Dog')
+        elif filter_by == 'cat':
+            queryset = queryset.filter(species__iexact='Cat')
 
         if sort == 'name_desc':
             queryset = queryset.order_by('-name')
-        elif sort == 'species':
-            queryset = queryset.order_by('species', 'name')
-        elif sort == 'species_desc':
-            queryset = queryset.order_by('-species', 'name')
         else:
             queryset = queryset.order_by('name')
 

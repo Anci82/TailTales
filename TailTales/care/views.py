@@ -4,6 +4,7 @@ from django.views import generic as views
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from django.views import View
+from django.utils import timezone
 
 from TailTales.care.forms import AppointmentForm, PreventiveCareForm, PreventiveCareDoseForm
 from TailTales.care.models import Appointment, PreventiveCare, PreventiveCareDose
@@ -15,9 +16,43 @@ class AppointmentListView(LoginRequiredMixin, views.ListView):
     model = Appointment
     template_name = 'care/appointment-list.html'
     context_object_name = 'appointments'
+    paginate_by = 6
 
     def get_queryset(self):
-        return Appointment.objects.filter(pet__owner=self.request.user).order_by('date')
+        queryset = Appointment.objects.filter(
+            pet__owner=self.request.user
+        )
+
+        filter_by = self.request.GET.get('filter', 'all')
+        sort_by = self.request.GET.get('sort', 'date_asc')
+        today = timezone.localdate()
+
+        if filter_by == 'upcoming':
+            queryset = queryset.filter(
+                is_completed=False,
+                date__gte=today,
+            )
+        elif filter_by == 'overdue':
+            queryset = queryset.filter(
+                is_completed=False,
+                date__lt=today,
+            )
+        elif filter_by == 'completed':
+            queryset = queryset.filter(
+                is_completed=True,
+            )
+
+        if sort_by == 'date_desc':
+            queryset = queryset.order_by('-date')
+        else:
+            queryset = queryset.order_by('date')
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['today'] = timezone.localdate()
+        return context
 
 
 class AppointmentCreateView(LoginRequiredMixin, views.CreateView):
