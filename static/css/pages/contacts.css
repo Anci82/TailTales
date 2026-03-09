@@ -2,7 +2,7 @@
    MY CONTACTS LIST
 ============================ */
 .contact-list-card {
-    max-width: 1100px;
+    max-width: 850px;
     margin: 0 auto;
     padding: 28px 22px;
     border-radius: 16px;
@@ -24,7 +24,8 @@
 
 .my-contacts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+    justify-content: center;
     gap: 1.5rem;
 }
 

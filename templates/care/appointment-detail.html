@@ -5,7 +5,7 @@
 {% block content %}
 <section class="form-section">
     <div class="form-card">
-        <h1>{{ appointment.title }}</h1>
+        <h1>{{ appointment.service_contact.get_contact_type_display }} - {{ appointment.title }}</h1>
 
         <p><strong>Pet:</strong> {{ appointment.pet.name }}</p>
         <p><strong>Date:</strong> {{ appointment.date }}</p>

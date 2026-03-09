@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from TailTales.care.models import Appointment, PreventiveCare
+from TailTales.care.models import Appointment, PreventiveCare, PreventiveCareDose
 
 
 @admin.register(Appointment)
@@ -12,6 +12,11 @@ class AppointmentAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 
+class PreventiveCareDoseInline(admin.TabularInline):
+    model = PreventiveCareDose
+    extra = 0
+
+
 @admin.register(PreventiveCare)
 class PreventiveCareAdmin(admin.ModelAdmin):
     list_display = ('id', 'pet', 'care_type', 'product_name', 'last_given_date', 'next_due_date')
@@ -19,3 +24,4 @@ class PreventiveCareAdmin(admin.ModelAdmin):
     search_fields = ('pet__name', 'product_name')
     ordering = ('next_due_date', 'care_type')
     list_per_page = 20
+    inlines = [PreventiveCareDoseInline]

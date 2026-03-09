@@ -5,17 +5,51 @@
 {% block content %}
 <section class="form-section">
     <div class="form-card">
-        <h1>{{ care_item.care_type }} - {{ care_item.pet.name }}</h1>
+        <h1>{{ care_item.get_care_type_display }} - {{ care_item.pet.name }}</h1>
 
         {% if care_item.product_name %}
             <p><strong>Product:</strong> {{ care_item.product_name }}</p>
         {% endif %}
 
+        <p><strong>Interval:</strong> Every {{ care_item.interval_days }} days</p>
         <p><strong>Last given:</strong> {{ care_item.last_given_date }}</p>
         <p><strong>Next due:</strong> {{ care_item.next_due_date }}</p>
 
+        {% if care_item.status == 'Overdue' %}
+            <p><strong>Status:</strong> Overdue by {{ care_item.overdue_days }} day{{ care_item.overdue_days|pluralize }}</p>
+        {% else %}
+            <p><strong>Status:</strong> {{ care_item.status }}</p>
+        {% endif %}
+
         {% if care_item.notes %}
             <p><strong>Notes:</strong> {{ care_item.notes }}</p>
+        {% endif %}
+
+        <hr>
+
+        <h2>Mark as Given</h2>
+        <form method="post" action="{% url 'preventivecare-mark-given' care_item.pk %}">
+            {% csrf_token %}
+            {{ dose_form.as_p }}
+            <div class="form-actions">
+                <button type="submit" class="primary-btn">Save Dose</button>
+            </div>
+        </form>
+
+        <hr>
+
+        <h2>Dose History</h2>
+        {% if care_item.doses.all %}
+            <ul>
+                {% for dose in care_item.doses.all %}
+                    <li>
+                        <strong>{{ dose.given_date }}</strong>
+                        {% if dose.notes %} — {{ dose.notes }}{% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No doses recorded yet.</p>
         {% endif %}
 
         <div class="form-actions">

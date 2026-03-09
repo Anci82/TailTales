@@ -3,34 +3,41 @@
 {% block title %}Preventive Care{% endblock %}
 
 {% block content %}
-<section class="form-section">
-    <div class="contact-list-card">
-        <h1>Preventive Care</h1>
+    <section class="form-section">
+        <div class="contact-list-card">
+            <h1>Preventive Care</h1>
 
-        <div class="contact-list-actions">
-            <a class="primary-btn" href="{% url 'preventivecare-create' %}">Add Preventive Care</a>
+            <div class="contact-list-actions">
+                <a class="primary-btn" href="{% url 'preventivecare-create' %}">Add Preventive Care</a>
+            </div>
+
+            <div class="my-contacts-grid">
+                {% for item in care_items %}
+                    <article class="my-contact-card">
+                        <h3>{{ item.get_care_type_display }}</h3>
+                        <p><strong>Pet:</strong> {{ item.pet.name }}</p>
+
+                        {% if item.product_name %}
+                            <p><strong>Product:</strong> {{ item.product_name }}</p>
+                        {% endif %}
+
+                        <p><strong>Next due:</strong> {{ item.next_due_date }}</p>
+
+                        {% if item.status == 'Overdue' %}
+                            <p><strong>Status:</strong> Overdue by {{ item.overdue_days }}
+                                day{{ item.overdue_days|pluralize }}</p>
+                        {% else %}
+                            <p><strong>Status:</strong> {{ item.status }}</p>
+                        {% endif %}
+
+                        <div class="my-contact-card-actions">
+                            <a class="secondary-btn" href="{% url 'preventivecare-detail' item.pk %}">View Details</a>
+                        </div>
+                    </article>
+                {% empty %}
+                    <p class="empty-message">No preventive care items yet.</p>
+                {% endfor %}
+            </div>
         </div>
-
-        <div class="my-contacts-grid">
-            {% for item in care_items %}
-                <article class="my-contact-card">
-                    <h3>{{ item.care_type }}</h3>
-                    <p><strong>Pet:</strong> {{ item.pet.name }}</p>
-
-                    {% if item.product_name %}
-                        <p><strong>Product:</strong> {{ item.product_name }}</p>
-                    {% endif %}
-
-                    <p><strong>Next due:</strong> {{ item.next_due_date }}</p>
-
-                    <div class="my-contact-card-actions">
-                        <a class="secondary-btn" href="{% url 'preventivecare-detail' item.pk %}">View Details</a>
-                    </div>
-                </article>
-            {% empty %}
-                <p class="empty-message">No preventive care items yet.</p>
-            {% endfor %}
-        </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

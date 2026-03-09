@@ -1,9 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
+from django.views import View
 
-from TailTales.care.forms import AppointmentForm, PreventiveCareForm
-from TailTales.care.models import Appointment, PreventiveCare
+from TailTales.care.forms import AppointmentForm, PreventiveCareForm, PreventiveCareDoseForm
+from TailTales.care.models import Appointment, PreventiveCare, PreventiveCareDose
 
 
 # -------- Appointments --------
@@ -81,16 +84,25 @@ class PreventiveCareListView(LoginRequiredMixin, views.ListView):
 
 class PreventiveCareCreateView(LoginRequiredMixin, views.CreateView):
     model = PreventiveCare
+    form_class = PreventiveCareForm
     template_name = 'care/preventivecare-create.html'
     success_url = reverse_lazy('preventivecare-list')
-
-    def get_form_class(self):
-        return PreventiveCareForm
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        PreventiveCareDose.objects.create(
+            preventive_care=self.object,
+            given_date=self.object.last_given_date,
+            notes='Initial recorded dose',
+        )
+
+        return response
 
 
 class PreventiveCareDetailView(LoginRequiredMixin, views.DetailView):
@@ -100,6 +112,11 @@ class PreventiveCareDetailView(LoginRequiredMixin, views.DetailView):
 
     def get_queryset(self):
         return PreventiveCare.objects.filter(pet__owner=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['dose_form'] = PreventiveCareDoseForm()
+        return context
 
 
 class PreventiveCareUpdateView(LoginRequiredMixin, views.UpdateView):
@@ -128,3 +145,22 @@ class PreventiveCareDeleteView(LoginRequiredMixin, views.DeleteView):
 
     def get_queryset(self):
         return PreventiveCare.objects.filter(pet__owner=self.request.user)
+
+class PreventiveCareMarkGivenView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        care_item = get_object_or_404(
+            PreventiveCare.objects.filter(pet__owner=request.user),
+            pk=pk,
+        )
+
+        form = PreventiveCareDoseForm(request.POST)
+        if form.is_valid():
+            given_date = form.cleaned_data['given_date']
+            notes = form.cleaned_data.get('notes', '')
+
+            care_item.record_dose(given_date=given_date, notes=notes)
+            messages.success(request, 'Dose recorded successfully.')
+        else:
+            messages.error(request, 'Please enter a valid dose date.')
+
+        return redirect('preventivecare-detail', pk=care_item.pk)

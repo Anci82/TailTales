@@ -14,7 +14,7 @@
         <div class="my-contacts-grid">
             {% for a in appointments %}
                 <article class="my-contact-card">
-                    <h3>{{ a.title }}</h3>
+                    <h3>{{ a.service_contact.get_contact_type_display }} - {{ a.title }}</h3>
                     <p><strong>Pet:</strong> {{ a.pet.name }}</p>
                     <p><strong>Date:</strong> {{ a.date }}</p>
                     <p><strong>Status:</strong> {% if a.is_completed %}Completed{% else %}Upcoming{% endif %}</p>

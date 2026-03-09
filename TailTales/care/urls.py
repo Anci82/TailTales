@@ -2,7 +2,8 @@ from django.urls import path
 
 from TailTales.care.views import (
     AppointmentListView, AppointmentCreateView, AppointmentDetailView, AppointmentUpdateView, AppointmentDeleteView,
-    PreventiveCareListView, PreventiveCareCreateView, PreventiveCareDetailView, PreventiveCareUpdateView, PreventiveCareDeleteView,
+    PreventiveCareListView, PreventiveCareCreateView, PreventiveCareDetailView, PreventiveCareUpdateView,
+    PreventiveCareDeleteView, PreventiveCareMarkGivenView,
 )
 
 urlpatterns = [
@@ -19,4 +20,5 @@ urlpatterns = [
     path('preventive/<int:pk>/', PreventiveCareDetailView.as_view(), name='preventivecare-detail'),
     path('preventive/<int:pk>/edit/', PreventiveCareUpdateView.as_view(), name='preventivecare-edit'),
     path('preventive/<int:pk>/delete/', PreventiveCareDeleteView.as_view(), name='preventivecare-delete'),
+    path('preventive/<int:pk>/mark-given/', PreventiveCareMarkGivenView.as_view(), name='preventivecare-mark-given'),
 ]
