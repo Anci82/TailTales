@@ -1,0 +1,113 @@
+/* ============================
+   PREVENTIVE CARE DETAIL
+============================ */
+
+.care-section {
+    margin-top: 1.5rem;
+    padding: 1.1rem 1.2rem;
+    border-radius: 14px;
+}
+
+.care-section h2 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: rgba(211, 81, 0, 0.92);
+    text-align: center;
+
+}
+
+
+.care-summary {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.dose-entry-section {
+    background: rgba(234, 209, 192, 0.92);
+    border: 1px solid rgba(181, 116, 55, 0.18);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.dose-history-section {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.section-intro {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: rgba(0, 0, 0, 0.91);
+    font-weight: bold;
+    opacity: 0.9;
+}
+
+.dose-entry-section textarea {
+    min-height: 90px;
+}
+
+.dose-history-list {
+    margin: 0.75rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dose-history-item {
+    padding: 0.7rem 0.85rem;
+    margin-bottom: 0.7rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.49);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dose-submit-actions {
+    margin-top: 1rem;
+    gap: 0;
+}
+
+.care-actions {
+    margin-top: 1.8rem;
+}
+
+.form-error {
+    display: block;
+    margin-top: 0.35rem;
+    color: #b00020;
+    font-weight: 700;
+}
+
+.form-card hr {
+    display: none;
+}
+
+.care-section p,
+.care-section li,
+.dose-entry-section label {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.section-intro {
+    font-size: 0.98rem;
+    color: #5a3d2b;
+}
+
+.dose-entry-section textarea {
+    min-height: 75px;
+}
+
+.dose-history-item {
+    font-size: 0.98rem;
+}
+
+.section-intro {
+    max-width: 680px;
+    margin: 0.75rem auto 1.5rem;
+    padding: 0.85rem 1rem;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #5a3d2b;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(181, 116, 55, 0.18);
+    border-radius: 12px;
+}

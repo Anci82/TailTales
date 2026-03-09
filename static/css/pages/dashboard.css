@@ -5,7 +5,7 @@
 }
 
 .dashboard-hero-content {
-    background-color: #d86f0b;
+    background-color: rgba(216, 111, 11, 0.88);
     padding: 4.5rem 2.5rem 3rem;
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@
     min-height: 180px;
     padding: 1.6rem 1.5rem;
     border-radius: 20px;
-    background: rgba(255, 248, 241, 0.96);
+    background: rgba(255, 255, 255, 0.6);
     text-decoration: none;
     color: inherit;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);

@@ -7,52 +7,87 @@
     <div class="form-card">
         <h1>{{ care_item.get_care_type_display }} - {{ care_item.pet.name }}</h1>
 
-        {% if care_item.product_name %}
-            <p><strong>Product:</strong> {{ care_item.product_name }}</p>
-        {% endif %}
+        <div class="care-section care-summary">
+            <h2>Care Details</h2>
 
-        <p><strong>Interval:</strong> Every {{ care_item.interval_days }} days</p>
-        <p><strong>Last given:</strong> {{ care_item.last_given_date }}</p>
-        <p><strong>Next due:</strong> {{ care_item.next_due_date }}</p>
+            {% if care_item.product_name %}
+                <p><strong>Product:</strong> {{ care_item.product_name }}</p>
+            {% endif %}
 
-        {% if care_item.status == 'Overdue' %}
-            <p><strong>Status:</strong> Overdue by {{ care_item.overdue_days }} day{{ care_item.overdue_days|pluralize }}</p>
-        {% else %}
-            <p><strong>Status:</strong> {{ care_item.status }}</p>
-        {% endif %}
+            <p><strong>Repeat interval:</strong> Every {{ care_item.interval_days }} days</p>
+            <p><strong>Last recorded dose:</strong> {{ care_item.last_given_date }}</p>
+            <p><strong>Next due date:</strong> {{ care_item.next_due_date }}</p>
 
-        {% if care_item.notes %}
-            <p><strong>Notes:</strong> {{ care_item.notes }}</p>
-        {% endif %}
+            {% if care_item.status == 'Overdue' %}
+                <p><strong>Status:</strong> Overdue by {{ care_item.overdue_days }} day{{ care_item.overdue_days|pluralize }}</p>
+            {% else %}
+                <p><strong>Status:</strong> {{ care_item.status }}</p>
+            {% endif %}
 
-        <hr>
+            {% if care_item.notes %}
+                <p><strong>Care notes:</strong> {{ care_item.notes }}</p>
+            {% endif %}
+        </div>
 
-        <h2>Mark as Given</h2>
-        <form method="post" action="{% url 'preventivecare-mark-given' care_item.pk %}">
-            {% csrf_token %}
-            {{ dose_form.as_p }}
-            <div class="form-actions">
-                <button type="submit" class="primary-btn">Save Dose</button>
-            </div>
-        </form>
+        <div class="care-section dose-entry-section">
+            <h2><span class="animation-span">💊</span>Record a New Dose</h2>
+            <p class="section-intro">
+                Use this section to record when the treatment was given.
+                Saving a new dose will update the last given date and calculate the next due date automatically.
+            </p>
 
-        <hr>
+            <form method="post" action="{% url 'preventivecare-mark-given' care_item.pk %}">
+                {% csrf_token %}
 
-        <h2>Dose History</h2>
-        {% if care_item.doses.all %}
-            <ul>
-                {% for dose in care_item.doses.all %}
-                    <li>
-                        <strong>{{ dose.given_date }}</strong>
-                        {% if dose.notes %} — {{ dose.notes }}{% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No doses recorded yet.</p>
-        {% endif %}
+                <p>
+                    <label for="{{ dose_form.given_date.id_for_label }}">{{ dose_form.given_date.label }}</label>
+                    {{ dose_form.given_date }}
+                    {% if dose_form.given_date.help_text %}
+                        <small>{{ dose_form.given_date.help_text }}</small>
+                    {% endif %}
+                    {% for error in dose_form.given_date.errors %}
+                        <small class="form-error">{{ error }}</small>
+                    {% endfor %}
+                </p>
 
-        <div class="form-actions">
+                <p>
+                    <label for="{{ dose_form.notes.id_for_label }}">{{ dose_form.notes.label }}</label>
+                    {{ dose_form.notes }}
+                    {% if dose_form.notes.help_text %}
+                        <small>{{ dose_form.notes.help_text }}</small>
+                    {% endif %}
+                    {% for error in dose_form.notes.errors %}
+                        <small class="form-error">{{ error }}</small>
+                    {% endfor %}
+                </p>
+
+                <div class="form-actions dose-submit-actions">
+                    <button type="submit" class="primary-btn">Save Dose</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="care-section dose-history-section">
+            <h2>Dose History</h2>
+            <p class="section-intro">Review previously recorded doses for this care item.</p>
+
+            {% if care_item.doses.all %}
+                <ul class="dose-history-list">
+                    {% for dose in care_item.doses.all %}
+                        <li class="dose-history-item">
+                            <strong>{{ dose.given_date }}</strong>
+                            {% if dose.notes %}
+                                <span> - {{ dose.notes }}</span>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No doses recorded yet.</p>
+            {% endif %}
+        </div>
+
+        <div class="form-actions care-actions">
             <a class="primary-btn" href="{% url 'preventivecare-edit' care_item.pk %}">Edit</a>
             <a class="primary-btn cancel" href="{% url 'preventivecare-delete' care_item.pk %}">Delete</a>
             <a class="primary-btn" href="{% url 'preventivecare-list' %}">Back to list</a>

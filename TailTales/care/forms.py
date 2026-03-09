@@ -50,5 +50,23 @@ class PreventiveCareDoseForm(forms.ModelForm):
         model = PreventiveCareDose
         fields = ('given_date', 'notes')
         widgets = {
-            'given_date': forms.DateInput(attrs={'type': 'date'}),
+            'given_date': forms.DateInput(
+                attrs={
+                    'type': 'date',
+                }
+            ),
+            'notes': forms.Textarea(
+                attrs={
+                    'rows': 4,
+                    'placeholder': 'Optional: given at vet clinic, mild reaction, different brand used, or any reminder for later.',
+                }
+            ),
+        }
+        labels = {
+            'given_date': 'Date given',
+            'notes': 'Optional notes',
+        }
+        help_texts = {
+            'given_date': 'Choose the date this treatment was given.',
+            'notes': 'Add extra details only if needed.',
         }

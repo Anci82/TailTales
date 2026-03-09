@@ -14,3 +14,8 @@
     100% {transform: scale(1);}
 }
 
+.animation-span {
+    display: inline-block;
+    animation: heartBeat 2.5s infinite ease-in-out;
+}
+
