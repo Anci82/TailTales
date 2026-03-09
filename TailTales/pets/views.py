@@ -60,6 +60,7 @@ class PetGalleryView(views.ListView):
     model = Pet
     template_name = 'pets/pet-gallery.html'
     context_object_name = 'pets'
+    paginate_by = 2
 
     def get_queryset(self):
         queryset = Pet.objects.filter(

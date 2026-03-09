@@ -4,36 +4,85 @@
 {% block title %}Pet Gallery{% endblock %}
 
 {% block content %}
-<section class="form-section">
-    <div class="form-card">
-        <h1>Pet Gallery</h1>
+    <section class="form-section">
+        <div class="form-card">
+            <h1>Pet Gallery</h1>
 
-        <form method="get" class="gallery-sort-form">
-            <label for="sort">Sort by:</label>
-            <select name="sort" id="sort" onchange="this.form.submit()">
-                <option value="name" {% if request.GET.sort == 'name' or not request.GET.sort %}selected{% endif %}>Name A-Z</option>
-                <option value="name_desc" {% if request.GET.sort == 'name_desc' %}selected{% endif %}>Name Z-A</option>
-                <option value="species" {% if request.GET.sort == 'species' %}selected{% endif %}>Species A-Z</option>
-                <option value="species_desc" {% if request.GET.sort == 'species' %}selected{% endif %}>Species Z-A</option>
-            </select>
-        </form>
+            <form method="get" class="gallery-sort-form">
+                <label for="sort">Sort by:</label>
+                <select name="sort" id="sort" onchange="this.form.submit()">
+                    <option value="name" {% if request.GET.sort == 'name' or not request.GET.sort %}selected{% endif %}>
+                        Name A-Z
+                    </option>
+                    <option value="name_desc" {% if request.GET.sort == 'name_desc' %}selected{% endif %}>Name Z-A
+                    </option>
+                    <option value="species" {% if request.GET.sort == 'species' %}selected{% endif %}>Species A-Z
+                    </option>
+                    <option value="species_desc" {% if request.GET.sort == 'species_desc' %}selected{% endif %}>Species
+                        Z-A
+                    </option>
+                </select>
+            </form>
 
-        <div class="gallery-grid">
-            {% for pet in pets %}
-                <article class="gallery-card">
-                    <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" class="gallery-image">
+            <div class="gallery-grid">
+                {% for pet in pets %}
+                    <article class="gallery-card">
+                        <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" class="gallery-image">
 
-                    <h3>{{ pet.name }}</h3>
-                    <p><strong>Species:</strong> {{ pet.species }}</p>
+                        <h3>{{ pet.name }}</h3>
+                        <p><strong>Species:</strong> {{ pet.species }}</p>
 
-                    {% if pet.breed %}
-                        <p><strong>Breed:</strong> {{ pet.breed }}</p>
-                    {% endif %}
-                </article>
-            {% empty %}
-                <p>No pets in the gallery yet.</p>
-            {% endfor %}
+                        {% if pet.breed %}
+                            <p><strong>Breed:</strong> {{ pet.breed }}</p>
+                        {% endif %}
+                    </article>
+                {% empty %}
+                    <p>No pets in the gallery yet.</p>
+                {% endfor %}
+            </div>
+
+            {% if is_paginated %}
+                <div class="gallery-pagination">
+                    <nav class="pagination-bar">
+
+                        {% if page_obj.has_previous %}
+                            <a class="page-btn nav-btn" href="?page=
+                                    {{ page_obj.previous_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                                Previous
+                            </a>
+                        {% else %}
+                            <span class="page-btn nav-btn disabled">Previous</span>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if num == 1 or num == page_obj.paginator.num_pages or num >= page_obj.number|add:'-1' and num <= page_obj.number|add:'1' %}
+                                {% if page_obj.number == num %}
+                                    <span class="page-btn current-page">{{ num }}</span>
+                                {% else %}
+                                    <a class="page-btn" href="?page=
+                                            {{ num }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                                        {{ num }}
+                                    </a>
+                                {% endif %}
+                            {% elif num == 2 and page_obj.number > 3 %}
+                                <span class="page-dots">...</span>
+                            {% elif num == page_obj.paginator.num_pages|add:'-1' and page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+                                <span class="page-dots">...</span>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a class="page-btn nav-btn" href="?page=
+                                    {{ page_obj.next_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                                Next
+                            </a>
+                        {% else %}
+                            <span class="page-btn nav-btn disabled">Next</span>
+                        {% endif %}
+
+                    </nav>
+                </div>
+            {% endif %}
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}
