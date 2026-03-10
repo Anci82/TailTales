@@ -1,11 +1,13 @@
 from datetime import timedelta
-from django.db import IntegrityError
 
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.db import IntegrityError
 from django.test import TestCase
 from django.urls import reverse
 from django.utils import timezone
+from rest_framework import status
+from rest_framework.test import APIClient
 
 from TailTales.care.forms import AppointmentForm, PreventiveCareForm
 from TailTales.care.models import Appointment, PreventiveCare
@@ -163,6 +165,7 @@ class FormTests(CareBaseTestMixin, TestCase):
 class CareViewTests(CareBaseTestMixin, TestCase):
     def setUp(self):
         super().setUp()
+
         self.appointment = Appointment.objects.create(
             pet=self.pet,
             service_contact=self.contact,
@@ -175,6 +178,7 @@ class CareViewTests(CareBaseTestMixin, TestCase):
             title='Other appointment',
             date=timezone.localdate() + timedelta(days=3),
         )
+
         self.care_item = PreventiveCare.objects.create(
             pet=self.pet,
             care_type='flea_tick',
@@ -194,8 +198,31 @@ class CareViewTests(CareBaseTestMixin, TestCase):
         response = self.client.get(reverse('appointment-list'))
         self.assertEqual(response.status_code, 302)
 
+    def test_appointment_create_view_saves_valid_data(self):
+        self.client.login(username='ana', password='pass12345')
+
+        response = self.client.post(
+            reverse('appointment-create'),
+            data={
+                'pet': self.pet.pk,
+                'service_contact': self.contact.pk,
+                'title': 'Vet visit',
+                'date': timezone.localdate() + timedelta(days=2),
+                'notes': 'Annual checkup',
+            },
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(
+            Appointment.objects.filter(
+                pet=self.pet,
+                title='Vet visit',
+            ).exists()
+        )
+
     def test_appointment_detail_allows_owner(self):
         self.client.login(username='ana', password='pass12345')
+
         response = self.client.get(
             reverse('appointment-detail', kwargs={'pk': self.appointment.pk})
         )
@@ -204,6 +231,7 @@ class CareViewTests(CareBaseTestMixin, TestCase):
 
     def test_appointment_detail_blocks_non_owner(self):
         self.client.login(username='ana', password='pass12345')
+
         response = self.client.get(
             reverse('appointment-detail', kwargs={'pk': self.other_appointment.pk})
         )
@@ -212,6 +240,7 @@ class CareViewTests(CareBaseTestMixin, TestCase):
 
     def test_preventive_care_detail_blocks_non_owner(self):
         self.client.login(username='ana', password='pass12345')
+
         response = self.client.get(
             reverse('preventivecare-detail', kwargs={'pk': self.other_care_item.pk})
         )
@@ -230,3 +259,53 @@ class CareViewTests(CareBaseTestMixin, TestCase):
         )
 
         self.assertEqual(response.status_code, 404)
+
+class AppointmentApiTests(CareBaseTestMixin, TestCase):
+    def setUp(self):
+        super().setUp()
+        self.client = APIClient()
+
+        self.user_appointment = Appointment.objects.create(
+            pet=self.pet,
+            service_contact=self.contact,
+            title='My appointment',
+            date=timezone.localdate() + timedelta(days=2),
+            notes='User appointment',
+            is_completed=False,
+        )
+
+        self.other_user_appointment = Appointment.objects.create(
+            pet=self.other_pet,
+            service_contact=self.other_contact,
+            title='Other user appointment',
+            date=timezone.localdate() + timedelta(days=3),
+            notes='Other appointment',
+            is_completed=False,
+        )
+
+    def test_appointment_api_requires_authentication(self):
+        response = self.client.get(reverse('api-appointment-list'))
+
+        self.assertIn(
+            response.status_code,
+            [status.HTTP_401_UNAUTHORIZED, status.HTTP_403_FORBIDDEN],
+        )
+
+    def test_appointment_api_list_returns_only_logged_in_users_appointments(self):
+        self.client.force_authenticate(user=self.user)
+
+        response = self.client.get(reverse('api-appointment-list'))
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 1)
+        self.assertEqual(response.data[0]['id'], self.user_appointment.id)
+        self.assertEqual(response.data[0]['title'], 'My appointment')
+
+    def test_appointment_api_detail_denies_access_to_other_users_appointment(self):
+        self.client.force_authenticate(user=self.user)
+
+        response = self.client.get(
+            reverse('api-appointment-detail', kwargs={'pk': self.other_user_appointment.pk})
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

@@ -5,9 +5,12 @@ from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from django.views import View
 from django.utils import timezone
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 from TailTales.care.forms import AppointmentForm, PreventiveCareForm, PreventiveCareDoseForm
 from TailTales.care.models import Appointment, PreventiveCare, PreventiveCareDose
+from TailTales.care.serializers import AppointmentSerializer
 
 
 # -------- Appointments --------
@@ -199,3 +202,22 @@ class PreventiveCareMarkGivenView(LoginRequiredMixin, View):
             messages.error(request, 'Please enter a valid dose date.')
 
         return redirect('preventivecare-detail', pk=care_item.pk)
+
+class AppointmentListApiView(generics.ListAPIView):
+    serializer_class = AppointmentSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Appointment.objects.filter(
+            pet__owner=self.request.user
+        ).select_related('pet', 'service_contact').order_by('date')
+
+
+class AppointmentDetailApiView(generics.RetrieveAPIView):
+    serializer_class = AppointmentSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Appointment.objects.filter(
+            pet__owner=self.request.user
+        ).select_related('pet', 'service_contact')
