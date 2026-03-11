@@ -3,36 +3,39 @@
 {% block title %}My Pets{% endblock %}
 
 {% block content %}
-<section class="form-section">
-    <div class="pet-list-card">
-        <h1>My Pets</h1>
+    <section class="form-section">
+        <div class="pet-list-card">
+            <h1>My Pets</h1>
+            <p class="section-intro">
+                Add, edit, and view your pets in one place, so their everyday details are always easy to find.
+            </p>
 
-        <div class="pet-list-actions">
-            <a class="primary-btn" href="{% url 'pet-create' %}">Add New Pet</a>
-        </div>
+            <div class="pet-list-actions">
+                <a class="primary-btn" href="{% url 'pet-create' %}">Add New Pet</a>
+            </div>
 
-        <div class="my-pets-grid">
-            {% for pet in pets %}
-                <article class="my-pet-card">
-                    {% if pet.photo_url %}
-                        <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" class="my-pet-image">
-                    {% else %}
-                        <div class="my-pet-image my-pet-image-placeholder">
-                            <span>No photo yet</span>
+            <div class="my-pets-grid">
+                {% for pet in pets %}
+                    <article class="my-pet-card">
+                        {% if pet.photo_url %}
+                            <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" class="my-pet-image">
+                        {% else %}
+                            <div class="my-pet-image my-pet-image-placeholder">
+                                <span>No photo yet</span>
+                            </div>
+                        {% endif %}
+
+                        <h3>{{ pet.name }}</h3>
+                        <p><strong>Species:</strong> {{ pet.species }}</p>
+
+                        <div class="my-pet-card-actions">
+                            <a class="secondary-btn" href="{% url 'pet-detail' pet.pk %}">View Details</a>
                         </div>
-                    {% endif %}
-
-                    <h3>{{ pet.name }}</h3>
-                    <p><strong>Species:</strong> {{ pet.species }}</p>
-
-                    <div class="my-pet-card-actions">
-                        <a class="secondary-btn" href="{% url 'pet-detail' pet.pk %}">View Details</a>
-                    </div>
-                </article>
-            {% empty %}
-                <p class="empty-message">No pets yet.</p>
-            {% endfor %}
+                    </article>
+                {% empty %}
+                    <p class="empty-message">No pets yet.</p>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

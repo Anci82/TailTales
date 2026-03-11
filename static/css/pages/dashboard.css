@@ -6,24 +6,25 @@
 
 .dashboard-hero-content {
     background-color: rgba(216, 111, 11, 0.88);
-    padding: 4.5rem 2.5rem 3rem;
+    padding: 2rem 2.5rem 3rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
 .dashboard-welcome {
-    margin: 0 0 1.2rem 0;
+    margin: 0 0 0.7rem 0;
     color: #ffffff;
     font-size: 2.2rem;
     text-align: center;
 }
 
 #dashboard-title {
-    margin: 0 auto 3rem auto;
+    margin: 0 auto 2rem auto;
     width: 100%;
     color: #ffffff;
     text-align: center;
+    font-weight: bold;
     animation: heartBeat 6.5s infinite ease-in-out;
 }
 
@@ -43,10 +44,10 @@
     min-height: 180px;
     padding: 1.6rem 1.5rem;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.6);
+    background: linear-gradient(135deg, #f5f5f5, rgb(230, 195, 155));
     text-decoration: none;
     color: inherit;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -95,6 +96,40 @@
     display: block;
 }
 
+.dashboard-reminders {
+    max-width: 720px;
+    margin: 0.8rem auto 4rem;
+    background: linear-gradient(135deg, #dfdad0, rgb(174, 203, 220));
+    border-radius: 1.2rem;
+    padding: 0.9rem 1.2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+.dashboard-reminders h3 {
+    margin: 0 0 0.45rem;
+    color: #d96f12;
+    font-size: 2rem;
+    line-height: 1.1;
+}
+
+.reminder-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.reminder-item {
+    margin-bottom: 0.35rem;
+    font-size: 1rem;
+    color: #243746;
+}
+
+.no-reminders {
+    margin: 0;
+    font-size: 1rem;
+    color: #243746;
+}
 /* Tablet */
 @media (max-width: 1100px) {
     .dashboard-hero {

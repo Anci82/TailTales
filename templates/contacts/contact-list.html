@@ -3,36 +3,40 @@
 {% block title %}My Contacts{% endblock %}
 
 {% block content %}
-<section class="form-section">
-    <div class="contact-list-card">
-        <h1>My Service Contacts</h1>
+    <section class="form-section">
+        <div class="contact-list-card">
+            <h1>My Service Contacts</h1>
+            <p class="section-intro">
+                Keep your trusted vets, groomers, trainers, and other pet service contacts neatly organised and easy to
+                reach.
+            </p>
 
-        <div class="contact-list-actions">
-            <a class="primary-btn" href="{% url 'contact-create' %}">Add New Contact</a>
+            <div class="contact-list-actions">
+                <a class="primary-btn" href="{% url 'contact-create' %}">Add New Contact</a>
+            </div>
+
+            <div class="my-contacts-grid">
+                {% for c in contacts %}
+                    <article class="my-contact-card">
+                        <h3>{{ c.name }}</h3>
+                        <p><strong>Type:</strong> {{ c.contact_type }}</p>
+
+                        {% if c.phone_number %}
+                            <p><strong>Phone:</strong> {{ c.phone_number }}</p>
+                        {% endif %}
+
+                        {% if c.email %}
+                            <p><strong>Email:</strong> {{ c.email }}</p>
+                        {% endif %}
+
+                        <div class="my-contact-card-actions">
+                            <a class="secondary-btn" href="{% url 'contact-detail' c.pk %}">View Details</a>
+                        </div>
+                    </article>
+                {% empty %}
+                    <p class="empty-message">No contacts yet.</p>
+                {% endfor %}
+            </div>
         </div>
-
-        <div class="my-contacts-grid">
-            {% for c in contacts %}
-                <article class="my-contact-card">
-                    <h3>{{ c.name }}</h3>
-                    <p><strong>Type:</strong> {{ c.contact_type }}</p>
-
-                    {% if c.phone_number %}
-                        <p><strong>Phone:</strong> {{ c.phone_number }}</p>
-                    {% endif %}
-
-                    {% if c.email %}
-                        <p><strong>Email:</strong> {{ c.email }}</p>
-                    {% endif %}
-
-                    <div class="my-contact-card-actions">
-                        <a class="secondary-btn" href="{% url 'contact-detail' c.pk %}">View Details</a>
-                    </div>
-                </article>
-            {% empty %}
-                <p class="empty-message">No contacts yet.</p>
-            {% endfor %}
-        </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

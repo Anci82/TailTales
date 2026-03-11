@@ -3,105 +3,123 @@
 {% block title %}Appointments{% endblock %}
 
 {% block content %}
-<section class="form-section">
-    <div class="contact-list-card">
-        <h1>Appointments</h1>
+    <section class="form-section">
+        <div class="contact-list-card">
+            <h1>Appointments</h1>
+            <p class="section-intro">
+                Keep track of upcoming visits and completed tasks, with simple reminders to help you spot what is coming
+                up next.
+            </p>
 
-        <div class="contact-list-actions">
-            <a class="primary-btn" href="{% url 'appointment-create' %}">Add New Appointment</a>
-        </div>
-
-        <form method="get" class="gallery-sort-form">
-            <div class="sort-filter-group">
-                <label for="filter">Filter:</label>
-                <select name="filter" id="filter" onchange="this.form.submit()">
-                    <option value="all" {% if request.GET.filter == 'all' or not request.GET.filter %}selected{% endif %}>All</option>
-                    <option value="upcoming" {% if request.GET.filter == 'upcoming' %}selected{% endif %}>Upcoming</option>
-                    <option value="overdue" {% if request.GET.filter == 'overdue' %}selected{% endif %}>Overdue</option>
-                    <option value="completed" {% if request.GET.filter == 'completed' %}selected{% endif %}>Completed</option>
-                </select>
+            <div class="contact-list-actions">
+                <a class="primary-btn" href="{% url 'appointment-create' %}">Add New Appointment</a>
             </div>
 
-            <div class="sort-filter-group">
-                <label for="sort">Sort:</label>
-                <select name="sort" id="sort" onchange="this.form.submit()">
-                    <option value="date_asc" {% if request.GET.sort == 'date_asc' or not request.GET.sort %}selected{% endif %}>Date nearest first</option>
-                    <option value="date_desc" {% if request.GET.sort == 'date_desc' %}selected{% endif %}>Date latest first</option>
-                </select>
-            </div>
-        </form>
-
-        <div class="my-contacts-grid">
-            {% for a in appointments %}
-                <article class="my-contact-card">
-                    <h3>
-                        {% if a.service_contact %}
-                            {{ a.service_contact.get_contact_type_display }} - {{ a.title }}
-                        {% else %}
-                            {{ a.title }}
-                        {% endif %}
-                    </h3>
-
-                    <p><strong>Pet:</strong> {{ a.pet.name }}</p>
-                    <p><strong>Date:</strong> {{ a.date }}</p>
-
-                    <p>
-                        <strong>Status:</strong>
-                        {% if a.is_completed %}
+            <form method="get" class="gallery-sort-form">
+                <div class="sort-filter-group">
+                    <label for="filter">Filter:</label>
+                    <select name="filter" id="filter" onchange="this.form.submit()">
+                        <option value="all"
+                                {% if request.GET.filter == 'all' or not request.GET.filter %}selected{% endif %}>All
+                        </option>
+                        <option value="upcoming" {% if request.GET.filter == 'upcoming' %}selected{% endif %}>Upcoming
+                        </option>
+                        <option value="overdue" {% if request.GET.filter == 'overdue' %}selected{% endif %}>Overdue
+                        </option>
+                        <option value="completed" {% if request.GET.filter == 'completed' %}selected{% endif %}>
                             Completed
-                        {% elif a.date < today %}
-                            Overdue
-                        {% else %}
-                            Upcoming
-                        {% endif %}
-                    </p>
+                        </option>
+                    </select>
+                </div>
 
-                    <div class="my-contact-card-actions">
-                        <a class="secondary-btn" href="{% url 'appointment-detail' a.pk %}">View Details</a>
-                    </div>
-                </article>
-            {% empty %}
-                <p class="empty-message">No appointments found.</p>
-            {% endfor %}
-        </div>
+                <div class="sort-filter-group">
+                    <label for="sort">Sort:</label>
+                    <select name="sort" id="sort" onchange="this.form.submit()">
+                        <option value="date_asc"
+                                {% if request.GET.sort == 'date_asc' or not request.GET.sort %}selected{% endif %}>Date
+                            nearest first
+                        </option>
+                        <option value="date_desc" {% if request.GET.sort == 'date_desc' %}selected{% endif %}>Date
+                            latest first
+                        </option>
+                    </select>
+                </div>
+            </form>
 
-        <div class="gallery-pagination">
-            <nav class="pagination-bar">
+            <div class="my-contacts-grid">
+                {% for a in appointments %}
+                    <article class="my-contact-card">
+                        <h3>
+                            {% if a.service_contact %}
+                                {{ a.service_contact.get_contact_type_display }} - {{ a.title }}
+                            {% else %}
+                                {{ a.title }}
+                            {% endif %}
+                        </h3>
 
-                {% if page_obj.has_previous %}
-                    <a class="page-btn nav-btn" href="?page={{ page_obj.previous_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
-                        Previous
-                    </a>
-                {% else %}
-                    <span class="page-btn nav-btn disabled">Previous</span>
-                {% endif %}
+                        <p><strong>Pet:</strong> {{ a.pet.name }}</p>
+                        <p><strong>Date:</strong> {{ a.date }}</p>
 
-                {% for num in page_obj.paginator.page_range %}
-                    {% if num == 1 or num == page_obj.paginator.num_pages or num >= page_obj.number|add:'-1' and num <= page_obj.number|add:'1' %}
-                        {% if page_obj.number == num %}
-                            <span class="page-btn current-page">{{ num }}</span>
-                        {% else %}
-                            <a class="page-btn" href="?page={{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
-                                {{ num }}
-                            </a>
-                        {% endif %}
-                    {% elif num == 2 and page_obj.number > 3 %}
-                        <span class="page-dots">...</span>
-                    {% elif num == page_obj.paginator.num_pages|add:'-1' and page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
-                        <span class="page-dots">...</span>
-                    {% endif %}
+                        <p>
+                            <strong>Status:</strong>
+                            {% if a.is_completed %}
+                                Completed
+                            {% elif a.date < today %}
+                                Overdue
+                            {% else %}
+                                Upcoming
+                            {% endif %}
+                        </p>
+
+                        <div class="my-contact-card-actions">
+                            <a class="secondary-btn" href="{% url 'appointment-detail' a.pk %}">View Details</a>
+                        </div>
+                    </article>
+                {% empty %}
+                    <p class="empty-message">No appointments found.</p>
                 {% endfor %}
+            </div>
 
-                {% if page_obj.has_next %}
-                    <a class="page-btn nav-btn" href="?page={{ page_obj.next_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
-                        Next
-                    </a>
-                {% else %}
-                    <span class="page-btn nav-btn disabled">Next</span>
-                {% endif %}
+            <div class="gallery-pagination">
+                <nav class="pagination-bar">
 
-            </nav>
+                    {% if page_obj.has_previous %}
+                        <a class="page-btn nav-btn" href="?page=
+                                {{ page_obj.previous_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                            Previous
+                        </a>
+                    {% else %}
+                        <span class="page-btn nav-btn disabled">Previous</span>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if num == 1 or num == page_obj.paginator.num_pages or num >= page_obj.number|add:'-1' and num <= page_obj.number|add:'1' %}
+                            {% if page_obj.number == num %}
+                                <span class="page-btn current-page">{{ num }}</span>
+                            {% else %}
+                                <a class="page-btn" href="?page=
+                                        {{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                                    {{ num }}
+                                </a>
+                            {% endif %}
+                        {% elif num == 2 and page_obj.number > 3 %}
+                            <span class="page-dots">...</span>
+                        {% elif num == page_obj.paginator.num_pages|add:'-1' and page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+                            <span class="page-dots">...</span>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <a class="page-btn nav-btn" href="?page=
+                                {{ page_obj.next_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                            Next
+                        </a>
+                    {% else %}
+                        <span class="page-btn nav-btn disabled">Next</span>
+                    {% endif %}
+
+                </nav>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

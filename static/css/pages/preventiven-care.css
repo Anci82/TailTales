@@ -86,10 +86,6 @@
     line-height: 1.5;
 }
 
-.section-intro {
-    font-size: 0.98rem;
-    color: #5a3d2b;
-}
 
 .dose-entry-section textarea {
     min-height: 75px;
@@ -99,15 +95,3 @@
     font-size: 0.98rem;
 }
 
-.section-intro {
-    max-width: 680px;
-    margin: 0.75rem auto 1.5rem;
-    padding: 0.85rem 1rem;
-    text-align: center;
-    line-height: 1.6;
-    font-size: 1rem;
-    color: #5a3d2b;
-    background: rgba(255, 255, 255, 0.35);
-    border: 1px solid rgba(181, 116, 55, 0.18);
-    border-radius: 12px;
-}

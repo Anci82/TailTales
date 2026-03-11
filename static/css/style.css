@@ -166,7 +166,19 @@ button.secondary-btn:hover {
     gap: 15px;
 }
 
-
+/*SECTION INTRO*/
+.section-intro {
+    max-width: 680px;
+    margin: 0.75rem auto 1.25rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #5a3d2b;
+    background: rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(181, 116, 55, 0.14);
+    border-radius: 12px;
+}
 
 /* ============================
    HEADER
@@ -283,6 +295,7 @@ header.header-wrapper.hidden {
     min-height: calc(100vh - 130px);
     margin-top: 130px;
 }
+
 .soft-pet-page {
     padding: 40px 16px;
     background-image: url("../images/general-bkg.png");
@@ -297,64 +310,69 @@ header.header-wrapper.hidden {
 }
 
 
-
-
-
 /* ============================
    FOOTER
 ============================ */
 .site-footer {
     background-color: rgb(149, 183, 199);
-    color: #333;
-    padding: 0.2rem;
-    font-size: 0.95rem;
+    color: #1f2a33;
+    padding: 1rem 1rem;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
-.footer-left,
-.footer-right {
+.footer-column {
     flex: 1;
     min-width: 220px;
 }
 
-h4 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
+.site-footer h4 {
+    margin: 0 0 0.8rem;
+    font-size: 1rem;
     color: #151d25;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
-ul {
+.footer-links {
     list-style: none;
+    margin: 0;
     padding: 0;
 }
 
-ul li {
-    margin-bottom: 0.3rem;
+.footer-links li {
+    margin-bottom: 0.5rem;
 }
 
-ul li a {
+.footer-links a {
     color: #0c1a6b;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    font-size: 0.9rem;
 }
 
-ul li a:hover {
-    color: #1abc9c;
+.footer-links a:hover {
+    color: white;
+    padding-left: 4px;
 }
 
-ul li a:focus {
+.footer-links a:focus {
     outline: 2px dashed #1abc9c;
     outline-offset: 4px;
+}
+.footer-note {
+    text-align: center;
+    margin: 1rem 0 0;
+    font-size: 0.85rem;
+    color: #2c3c46;
 }
 
 /* ============================
@@ -387,16 +405,31 @@ ul li a:focus {
     .main-wrapper {
         margin-top: 180px;
     }
+
     .dashboard-hero {
-    grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
 
     .dashboard-hero-image {
-    order: -1;
-    min-height: 280px;
+        order: -1;
+        min-height: 280px;
     }
 
     .feature-grid {
-    grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .site-footer {
+        text-align: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        width: 100%;
+        max-width: 400px;
     }
 }

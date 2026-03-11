@@ -5,48 +5,67 @@
 {% block main_class %}dashboard-page{% endblock %}
 
 {% block content %}
-<section class="dashboard-hero">
-    <div class="dashboard-hero-content">
+    <section class="dashboard-hero">
+        <div class="dashboard-hero-content">
+
+            <section class="dashboard-reminders">
+                <h3>Tomorrow's Reminders</h3>
+
+                {% if tomorrow_appointments %}
+                    <ul class="reminder-list">
+                        {% for appointment in tomorrow_appointments %}
+                            <li class="reminder-item">
+                                <strong>{{ appointment.pet.name }}</strong> — {{ appointment.title }}
+                                {% if appointment.service_contact %}
+                                    with {{ appointment.service_contact.name }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="no-reminders">No appointments scheduled for tomorrow.</p>
+                {% endif %}
+            </section>
         <p class="dashboard-welcome">Welcome back, {{ request.user.username }}</p>
-        <h1 id="dashboard-title">Choose what you want to manage:</h1>
+            <h1 id="dashboard-title">Choose what you want to manage:</h1>
 
-        <section class="feature-grid">
-            <a class="feature-card" href="{% url 'pet-list' %}">
-                <div class="feature-card-header">
-                    <span class="feature-icon">🐾</span>
-                    <h3>My Pets</h3>
-                </div>
-                <p>Add, edit, and view your pets.</p>
-            </a>
+            <section class="feature-grid">
+                <a class="feature-card" href="{% url 'pet-list' %}">
+                    <div class="feature-card-header">
+                        <span class="feature-icon">🐾</span>
+                        <h3>My Pets</h3>
+                    </div>
+                    <p>Add, edit, and view your pets.</p>
+                </a>
 
-            <a class="feature-card" href="{% url 'contact-list' %}">
-                <div class="feature-card-header">
-                    <span class="feature-icon">📒</span>
-                    <h3>Contacts</h3>
-                </div>
-                <p>Vets, groomers, trainers, and more.</p>
-            </a>
+                <a class="feature-card" href="{% url 'contact-list' %}">
+                    <div class="feature-card-header">
+                        <span class="feature-icon">📒</span>
+                        <h3>Contacts</h3>
+                    </div>
+                    <p>Vets, groomers, trainers, and more.</p>
+                </a>
 
-            <a class="feature-card" href="{% url 'appointment-list' %}">
-                <div class="feature-card-header">
-                    <span class="feature-icon">📅</span>
-                    <h3>Appointments</h3>
-                </div>
-                <p>Upcoming visits and completed tasks.</p>
-            </a>
+                <a class="feature-card" href="{% url 'appointment-list' %}">
+                    <div class="feature-card-header">
+                        <span class="feature-icon">📅</span>
+                        <h3>Appointments</h3>
+                    </div>
+                    <p>Upcoming visits and completed tasks.</p>
+                </a>
 
-            <a class="feature-card" href="{% url 'preventivecare-list' %}">
-                <div class="feature-card-header">
-                    <span class="feature-icon">🩺</span>
-                    <h3>Preventive Care</h3>
-                </div>
-                <p>Track flea, tick, deworming, and heartworm care.</p>
-            </a>
-        </section>
-    </div>
+                <a class="feature-card" href="{% url 'preventivecare-list' %}">
+                    <div class="feature-card-header">
+                        <span class="feature-icon">🩺</span>
+                        <h3>Preventive Care</h3>
+                    </div>
+                    <p>Track flea, tick, deworming, and heartworm care.</p>
+                </a>
+            </section>
+        </div>
 
-    <div class="dashboard-hero-image">
-        <img src="{% static 'images/dashboard-side.png' %}" alt="TailTales dashboard illustration">
-    </div>
-</section>
+        <div class="dashboard-hero-image">
+            <img src="{% static 'images/dashboard-side.png' %}" alt="TailTales dashboard illustration">
+        </div>
+    </section>
 {% endblock %}
