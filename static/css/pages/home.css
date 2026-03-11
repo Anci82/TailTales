@@ -4,7 +4,7 @@
 .home-hero {
     display: grid;
     grid-template-columns: 6.5fr 3.5fr;
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 110px);
     background-color: rgb(149, 183, 199);
 }
 
@@ -42,4 +42,78 @@
 
 .home-actions {
     margin-top: 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .home-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .home-hero-image {
+        min-height: 320px;
+    }
+
+    .home-hero-image img {
+        height: 100%;
+        object-position: center;
+    }
+
+    .home-hero-content {
+        padding: 2.2rem 1.5rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .home-hero-content h2 {
+        font-size: 1.9rem;
+    }
+
+    .home-hero-content p {
+        font-size: 1.05rem;
+        max-width: 640px;
+    }
+
+    .home-actions {
+        margin-top: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .home-hero {
+        min-height: auto;
+    }
+
+    .home-hero-image {
+        min-height: 220px;
+    }
+
+    .home-hero-content {
+        padding: 1.6rem 1rem;
+    }
+
+    .home-hero-content h2 {
+        font-size: 1.55rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .home-hero-content p {
+        font-size: 0.98rem;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
+    }
+
+    .home-actions {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .home-actions .primary-btn,
+    .home-actions .secondary-btn {
+        width: 100%;
+        max-width: 260px;
+    }
 }

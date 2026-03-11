@@ -26,40 +26,48 @@
                     <p class="no-reminders">No appointments scheduled for tomorrow.</p>
                 {% endif %}
             </section>
-        <p class="dashboard-welcome">Welcome back, {{ request.user.username }}</p>
+            <p class="dashboard-welcome">Welcome back, {{ request.user.username }}</p>
             <h1 id="dashboard-title">Choose what you want to manage:</h1>
 
             <section class="feature-grid">
                 <a class="feature-card" href="{% url 'pet-list' %}">
-                    <div class="feature-card-header">
-                        <span class="feature-icon">🐾</span>
-                        <h3>My Pets</h3>
+                    <div class="feature-card-top">
+                        <img src="{% static 'images/pet_icon.png' %}" alt="" class="feature-illustration">
+                        <div class="feature-card-text">
+                            <h3>My Pets</h3>
+                            <p>Add, edit, and view your pets.</p>
+                        </div>
                     </div>
-                    <p>Add, edit, and view your pets.</p>
                 </a>
 
                 <a class="feature-card" href="{% url 'contact-list' %}">
-                    <div class="feature-card-header">
-                        <span class="feature-icon">📒</span>
-                        <h3>Contacts</h3>
+                    <div class="feature-card-top">
+                        <img src="{% static 'images/contact_icon.png' %}" alt="" class="feature-illustration">
+                        <div class="feature-card-text">
+                            <h3>Contacts</h3>
+                            <p>Vets, groomers, trainers, and more.</p>
+                        </div>
                     </div>
-                    <p>Vets, groomers, trainers, and more.</p>
                 </a>
 
                 <a class="feature-card" href="{% url 'appointment-list' %}">
-                    <div class="feature-card-header">
-                        <span class="feature-icon">📅</span>
-                        <h3>Appointments</h3>
+                    <div class="feature-card-top">
+                        <img src="{% static 'images/appoitm_con.png' %}" alt="" class="feature-illustration">
+                        <div class="feature-card-text">
+                            <h3>Appointments</h3>
+                            <p>Upcoming visits and completed tasks.</p>
+                        </div>
                     </div>
-                    <p>Upcoming visits and completed tasks.</p>
                 </a>
 
                 <a class="feature-card" href="{% url 'preventivecare-list' %}">
-                    <div class="feature-card-header">
-                        <span class="feature-icon">🩺</span>
-                        <h3>Preventive Care</h3>
+                    <div class="feature-card-top">
+                        <img src="{% static 'images/care_icon.png' %}" alt="" class="feature-illustration">
+                        <div class="feature-card-text">
+                            <h3>Preventive Care</h3>
+                            <p>Track flea&tick, deworming care.</p>
+                        </div>
                     </div>
-                    <p>Track flea, tick, deworming, and heartworm care.</p>
                 </a>
             </section>
         </div>

@@ -6,7 +6,7 @@
     padding: 30px 16px;
     border-radius: 14px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    background: rgba(255, 255, 255, 0.82);
+    background: linear-gradient(180deg, #fffaf3 0%, #f7e6d3 55%, #f3dcc6 100%);
     backdrop-filter: blur(2px);
 }
 
@@ -35,4 +35,53 @@
     margin: 0 auto 20px;
     object-fit: contain;
     border-radius: 50%;
+}
+
+@media (max-width: 900px) {
+    .about-wrapper {
+        max-width: 100%;
+        padding: 24px 14px;
+    }
+
+    .about-wrapper h1 {
+        font-size: 2rem;
+        margin-bottom: 16px;
+    }
+
+    .about-wrapper p {
+        font-size: 1.08rem;
+        padding: 8px 4px;
+    }
+
+    .about-wrapper img {
+        width: 170px;
+        height: 170px;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-wrapper {
+        padding: 18px 12px;
+        border-radius: 12px;
+    }
+
+    .about-wrapper h1 {
+        font-size: 1.6rem;
+        line-height: 1.2;
+        margin-bottom: 14px;
+    }
+
+    .about-wrapper p {
+        font-size: 0.98rem;
+        line-height: 1.55;
+        font-weight: 700;
+        padding: 6px 2px;
+    }
+
+    .about-wrapper img {
+        width: 130px;
+        height: 130px;
+        margin-bottom: 14px;
+    }
 }

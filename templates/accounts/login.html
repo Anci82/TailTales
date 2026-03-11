@@ -1,21 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
-    <section class="form-page">
-        <div class="form-card">
+<section class="form-page login-page">
+    <div class="login-card-wrap">
+        <div class="login-badge">
+            <img src="{% static 'images/login-badge.png' %}" alt="Cute dog and cat" class="login-badge-image">
+        </div>
+
+        <div class="form-card login-card">
             <h1>Login</h1>
+            <p class="login-subtitle">
+                Welcome back! Your fluffy little corner is waiting for you.
+            </p>
 
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
 
+                <div class="login-links">
+                    <a href="#" class="login-reset-link">Forgot your password?</a>
+                </div>
+
                 <div class="form-actions">
                     <button type="submit" class="primary-btn">Login</button>
-                    <a class="secondary-btn" href="{% url 'home' %}">Cancel</a>
+                    <a href="{% url 'home' %}" class="secondary-btn">Cancel</a>
                 </div>
             </form>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
