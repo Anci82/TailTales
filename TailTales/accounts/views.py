@@ -4,6 +4,7 @@ from django.views import generic as views
 
 from TailTales.accounts.forms import RegisterForm
 from TailTales.accounts.models import Profile
+from TailTales.accounts.utils import send_welcome_email
 
 
 class RegisterView(views.CreateView):
@@ -15,6 +16,8 @@ class RegisterView(views.CreateView):
         response = super().form_valid(form)
 
         Profile.objects.create(user=self.object)
+
+        send_welcome_email(self.object)
 
         login(self.request, self.object)
         return response
