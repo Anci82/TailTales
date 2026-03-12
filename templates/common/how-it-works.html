@@ -8,66 +8,74 @@
 {% endblock %}
 
 {% block content %}
-<section class="how-it-works-page">
-    <div class="how-it-works-hero">
-        <h1>How TailTales Works</h1>
-        <p class="how-it-works-intro">
-            Keep pet details, appointments, preventive care, and important contacts
-            all together in one cozy place.
-        </p>
-    </div>
+    <section class="how-it-works-page">
+        <div class="how-it-works-shell">
 
-    <div class="steps-grid">
-        <article class="step-card">
-            <div class="step-number">1</div>
-            <h3>Add your pet</h3>
-            <p>
-                Create a pet profile with photo, breed, age, weight, and other useful details.
-            </p>
-        </article>
+            <div class="how-top">
+                <div class="how-top-box how-top-dogs">
+                    <img src="{% static 'images/dogs.png' %}" alt="TailTales dogs" class="how-top-img">
+                </div>
 
-        <article class="step-card">
-            <div class="step-number">2</div>
-            <h3>Save useful contacts</h3>
-            <p>
-                Keep vet, groomer, and other important service contacts easy to find whenever you need them.
-            </p>
-        </article>
+                <div class="how-top-box how-top-title">
+                    <img src="{% static 'images/title.png' %}" alt="TailTales title" class="how-top-img">
+                </div>
+            </div>
 
-        <article class="step-card">
-            <div class="step-number">3</div>
-            <h3>Track appointments</h3>
-            <p>
-                Add upcoming visits and stay on top of what is coming up next for each pet.
-            </p>
-        </article>
+            <div class="how-steps">
+                <article class="how-step-card">
+                    <div class="how-step-image-wrap">
+                        <img src="{% static 'images/1step.png' %}" alt="Getting started" class="how-step-image">
+                    </div>
+                    <h2 class="how-step-title">Getting Started</h2>
+                    <p class="how-step-text">
+                        Create an account to begin your pet’s safe little space and get access to your personal
+                        dashboard.
+                    </p>
+                </article>
 
-        <article class="step-card">
-            <div class="step-number">4</div>
-            <h3>Record preventive care</h3>
-            <p>
-                Log flea, tick, worming, and other routine treatments in one place.
-            </p>
-        </article>
+                <article class="how-step-card">
+                    <div class="how-step-image-wrap">
+                        <img src="{% static 'images/2step.png' %}" alt="Pet profiles and contacts"
+                             class="how-step-image">
+                    </div>
+                    <h2 class="how-step-title">Pet Profile & Contacts</h2>
+                    <p class="how-step-text">
+                        Add your pet’s details and save useful contacts like vets, groomers, or trainers in one place.
+                    </p>
+                </article>
 
-        <article class="step-card">
-            <div class="step-number">5</div>
-            <h3>Stay on top of reminders</h3>
-            <p>
-                See what is due soon so important care and appointments do not sneak up on you.
-            </p>
-        </article>
-    </div>
+                <article class="how-step-card">
+                    <div class="how-step-image-wrap">
+                        <img src="{% static 'images/3step.jpg' %}" alt="Management hub" class="how-step-image">
+                    </div>
+                    <h2 class="how-step-title">Management Hub</h2>
+                    <p class="how-step-text">
+                        Use your central dashboard to reach pets, contacts, appointments, and preventive care quickly.
+                    </p>
+                </article>
 
-    <div class="how-it-works-preview">
-        <div class="preview-text">
-            <h2>Everything in one simple dashboard</h2>
-            <p>
-                TailTales helps you keep your pet’s care more organised, whether you are checking
-                upcoming appointments, reviewing preventive care, or looking up an important contact.
-            </p>
+                <article class="how-step-card">
+                    <div class="how-step-image-wrap">
+                        <img src="{% static 'images/4step.png' %}" alt="Appointments" class="how-step-image">
+                    </div>
+                    <h2 class="how-step-title">Never Miss an Appointment</h2>
+                    <p class="how-step-text">
+                        Schedule important visits and keep tomorrow’s appointments visible, so nothing sneaks up on you.
+                    </p>
+                </article>
 
-            <div class="preview-actions">
+                <article class="how-step-card">
+                    <div class="how-step-image-wrap">
+                        <img src="{% static 'images/5step.png' %}" alt="Preventive care" class="how-step-image">
+                    </div>
+                    <h2 class="how-step-title">Track Preventive Care</h2>
+                    <p class="how-step-text">
+                        Record doses, update next due dates, and keep routine care simple to follow.
+                    </p>
+                </article>
+            </div>
+
+            <div class="how-actions">
                 {% if user.is_authenticated %}
                     <a href="{% url 'dashboard' %}" class="primary-btn">Go to Dashboard</a>
                 {% else %}
@@ -75,13 +83,7 @@
                     <a href="{% url 'login' %}" class="secondary-btn">Log In</a>
                 {% endif %}
             </div>
-        </div>
 
-        <div class="preview-image-box">
-            <div class="preview-placeholder">
-                Dashboard preview coming soon
-            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}
