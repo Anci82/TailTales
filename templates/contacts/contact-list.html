@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}My Contacts{% endblock %}
 
 {% block content %}
     <section class="form-section">
         <div class="contact-list-card">
-            <h1>My Service Contacts</h1>
+            <div class="contacts-title-wrap">
+                <img src="{% static 'images/contacts-title.png' %}" alt="My Service Contacts"
+                     class="contacts-title-image">
+            </div>
             <p class="section-intro">
                 Keep your trusted vets, groomers, trainers, and other pet service contacts neatly organised and easy to
                 reach.

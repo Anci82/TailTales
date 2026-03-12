@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Preventive Care{% endblock %}
 
 {% block content %}
     <section class="form-section">
         <div class="contact-list-card">
-            <h1>Preventive Care</h1>
+            <div class="contacts-title-wrap">
+                <img src="{% static 'images/my-care.png' %}" alt="My Service Contacts"
+                     class="contacts-title-image">
+            </div>
             <p class="section-intro">
                 Track flea, tick, worming, and other routine care in one place.<span class="animation-span">💊</span><br>
                 Just record each new dose, and the next due date updates automatically so nothing sneaks up on you.

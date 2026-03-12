@@ -17,6 +17,7 @@
 }
 
 
+
 /* ============================
    MY PETS LIST
 ============================ */
@@ -26,7 +27,7 @@
     padding: 28px 22px;
     border-radius: 16px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    background: linear-gradient(135deg, #dfdad0, rgb(149, 183, 199));
+    background: linear-gradient(180deg, #fffaf3 0%, #f7e6d3 55%, #f3dcc6 100%);
 }
 
 .pet-list-card h1 {

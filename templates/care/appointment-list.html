@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Appointments{% endblock %}
 
 {% block content %}
     <section class="form-section">
         <div class="contact-list-card">
-            <h1>Appointments</h1>
+            <div class="contacts-title-wrap">
+                <img src="{% static 'images/my-appoitments.png' %}" alt="My Service Contacts"
+                     class="contacts-title-image">
+            </div>
             <p class="section-intro">
                 Keep track of upcoming visits and completed tasks, with simple reminders to help you spot what is coming
                 up next.

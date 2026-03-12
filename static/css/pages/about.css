@@ -11,8 +11,10 @@
 }
 
 .about-wrapper h1 {
+    font-family: 'Alex Brush', cursive;
+    font-weight: 400;
     margin-bottom: 20px;
-    font-size: 2.26rem;
+    font-size: 3rem;
     text-align: center;
 }
 

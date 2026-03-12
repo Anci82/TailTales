@@ -1,7 +1,7 @@
 .dashboard-hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: calc(100vh - 130px);
+    min-height: calc(100vh - 110px);
 }
 
 .dashboard-hero-content {

@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}My Pets{% endblock %}
 
 {% block content %}
     <section class="form-section">
         <div class="pet-list-card">
-            <h1>My Pets</h1>
+            <div class="contacts-title-wrap">
+                <img src="{% static 'images/my-pets.png' %}" alt="My Service Contacts"
+                     class="contacts-title-image">
+            </div>
             <p class="section-intro">
                 Add, edit, and view your pets in one place, so their everyday details are always easy to find.
             </p>
