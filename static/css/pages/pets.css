@@ -16,6 +16,7 @@
     margin: 0 auto;
 }
 
+
 /* ============================
    MY PETS LIST
 ============================ */
@@ -93,4 +94,93 @@
     font-size: 1.2rem;
     grid-column: 1 / -1;
     margin: 1rem 0 0 0;
+}
+/* ============================
+   PET CREATE FORM
+============================ */
+.pet-create-card {
+    max-width: 760px;
+    padding-top: 5.6rem !important;
+}
+
+.pet-create-card form p {
+    margin-bottom: 1rem;
+}
+
+.pet-create-card .form-actions {
+    margin-top: 1.2rem;
+}
+
+.pet-create-card label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+    color: #4d392c;
+}
+
+.pet-create-card input[type="text"],
+.pet-create-card input[type="number"],
+.pet-create-card input[type="url"],
+.pet-create-card select,
+.pet-create-card textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    border: 1px solid #b9c7dc;
+    background: #dfe8f6;
+    font-size: 1rem;
+    color: #3c2d21;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.pet-create-card input[type="text"]:focus,
+.pet-create-card input[type="number"]:focus,
+.pet-create-card input[type="url"]:focus,
+.pet-create-card select:focus,
+.pet-create-card textarea:focus {
+    border-color: #8d96db;
+    box-shadow: 0 0 0 3px rgba(141, 150, 219, 0.18);
+    transform: translateY(-1px);
+}
+
+.pet-create-card textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.pet-create-card .helptext {
+    display: none;
+}
+
+.pet-create-card ul.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.45rem 0;
+    color: #b23434;
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+
+@media (max-width: 900px) {
+    .pet-create-card {
+        padding-top: 6rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .pet-create-card {
+        padding-top: 4.9rem !important;
+    }
+
+    .pet-create-card input[type="text"],
+    .pet-create-card input[type="number"],
+    .pet-create-card input[type="url"],
+    .pet-create-card select,
+    .pet-create-card textarea {
+        padding: 0.8rem 0.9rem;
+        font-size: 0.96rem;
+        border-radius: 12px;
+    }
 }

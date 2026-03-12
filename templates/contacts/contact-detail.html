@@ -3,36 +3,39 @@
 {% block title %}{{ contact.name }}{% endblock %}
 
 {% block content %}
-<section class="form-section">
-    <div class="form-card">
-        <h1>{{ contact.name }}</h1>
+    <section class="form-section">
+        <div class="form-card">
+            <h1>{{ contact.name }}</h1>
 
-        <p><strong>Type:</strong> {{ contact.contact_type }}</p>
+            <p><strong>Type:</strong> {{ contact.contact_type }}</p>
 
-        {% if contact.phone %}
-            <p><strong>Phone:</strong> {{ contact.phone }}</p>
-        {% endif %}
+            {% if contact.phone %}
+                <p>
+                    <strong>Phone:</strong>
+                    <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+                </p>
+            {% endif %}
 
-        {% if contact.email %}
-            <p>
-                <strong>Email:</strong>
-                <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
-            </p>
-        {% endif %}
+            {% if contact.email %}
+                <p>
+                    <strong>Email:</strong>
+                    <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                </p>
+            {% endif %}
 
-        {% if contact.address %}
-            <p><strong>Address:</strong> {{ contact.address }}</p>
-        {% endif %}
+            {% if contact.address %}
+                <p><strong>Address:</strong> {{ contact.address }}</p>
+            {% endif %}
 
-        {% if contact.notes %}
-            <p><strong>Notes:</strong> {{ contact.notes }}</p>
-        {% endif %}
+            {% if contact.notes %}
+                <p><strong>Notes:</strong> {{ contact.notes }}</p>
+            {% endif %}
 
-        <div class="form-actions">
-            <a class="primary-btn" href="{% url 'contact-edit' contact.pk %}">Edit</a>
-            <a class="primary-btn cancel" href="{% url 'contact-delete' contact.pk %}">Delete</a>
-            <a class="primary-btn" href="{% url 'contact-list' %}">Back to list</a>
+            <div class="form-actions">
+                <a class="primary-btn" href="{% url 'contact-edit' contact.pk %}">Edit</a>
+                <a class="primary-btn cancel" href="{% url 'contact-delete' contact.pk %}">Delete</a>
+                <a class="primary-btn" href="{% url 'contact-list' %}">Back to list</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

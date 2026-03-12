@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Register{% endblock %}
 
 {% block content %}
-    <section class="form-page">
-        <div class="form-card">
+<section class="form-page login-page">
+    <div class="login-card-wrap">
+        <div class="login-badge">
+            <img src="{% static 'images/login-badge.png' %}" alt="Cute dog and cat" class="login-badge-image">
+        </div>
+
+        <div class="form-card login-card register-card">
             <h1>Create Account</h1>
+            <p class="login-subtitle">
+                New here? Let’s make a cozy little home for you and your pets.
+            </p>
 
             <form method="post">
                 {% csrf_token %}
@@ -17,5 +26,6 @@
                 </div>
             </form>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}

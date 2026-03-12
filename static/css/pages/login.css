@@ -159,9 +159,24 @@
 .login-card .helptext {
     display: none;
 }
+.register-card {
+    padding-top: 5.6rem !important;
+}
+
+.register-card form p {
+    margin-bottom: 1.05rem;
+}
+
+.register-card .form-actions {
+    margin-top: 1.2rem;
+}
+
 
 /* tablet */
 @media (max-width: 900px) {
+    .register-card {
+        padding-top: 6.1rem !important;
+    }
     .login-page {
         padding-top: 3rem;
     }
@@ -194,6 +209,9 @@
 
 /* mobile */
 @media (max-width: 600px) {
+    .register-card {
+        padding-top: 5rem !important;
+    }
     .login-page {
         padding: 2.4rem 0.8rem 1.5rem;
     }
