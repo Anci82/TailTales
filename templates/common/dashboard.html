@@ -11,7 +11,7 @@
             <section class="dashboard-reminders">
                 <h3>Coming Up Tomorrow</h3>
 
-                {% if tomorrow_appointments %}
+                {% if tomorrow_appointments or tomorrow_preventive_care %}
                     <ul class="reminder-list">
                         {% for appointment in tomorrow_appointments %}
                             <li class="reminder-item">
@@ -21,9 +21,19 @@
                                 {% endif %}
                             </li>
                         {% endfor %}
+
+                        {% for care_item in tomorrow_preventive_care %}
+                            <li class="reminder-item">
+                                <strong>{{ care_item.pet.name }}</strong> — {{ care_item.get_care_type_display }}
+                                due tomorrow
+                                {% if care_item.product_name %}
+                                    ({{ care_item.product_name }})
+                                {% endif %}
+                            </li>
+                        {% endfor %}
                     </ul>
                 {% else %}
-                    <p class="no-reminders">No appointments scheduled for tomorrow.</p>
+                    <p class="no-reminders">No appointments or preventive care due tomorrow.</p>
                 {% endif %}
             </section>
             <p class="dashboard-welcome">Welcome back, {{ request.user.username }}</p>

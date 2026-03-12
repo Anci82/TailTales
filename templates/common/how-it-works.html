@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}How TailTales Works{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/pages/how-it-works.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="how-it-works-page">
+    <div class="how-it-works-hero">
+        <h1>How TailTales Works</h1>
+        <p class="how-it-works-intro">
+            Keep pet details, appointments, preventive care, and important contacts
+            all together in one cozy place.
+        </p>
+    </div>
+
+    <div class="steps-grid">
+        <article class="step-card">
+            <div class="step-number">1</div>
+            <h3>Add your pet</h3>
+            <p>
+                Create a pet profile with photo, breed, age, weight, and other useful details.
+            </p>
+        </article>
+
+        <article class="step-card">
+            <div class="step-number">2</div>
+            <h3>Save useful contacts</h3>
+            <p>
+                Keep vet, groomer, and other important service contacts easy to find whenever you need them.
+            </p>
+        </article>
+
+        <article class="step-card">
+            <div class="step-number">3</div>
+            <h3>Track appointments</h3>
+            <p>
+                Add upcoming visits and stay on top of what is coming up next for each pet.
+            </p>
+        </article>
+
+        <article class="step-card">
+            <div class="step-number">4</div>
+            <h3>Record preventive care</h3>
+            <p>
+                Log flea, tick, worming, and other routine treatments in one place.
+            </p>
+        </article>
+
+        <article class="step-card">
+            <div class="step-number">5</div>
+            <h3>Stay on top of reminders</h3>
+            <p>
+                See what is due soon so important care and appointments do not sneak up on you.
+            </p>
+        </article>
+    </div>
+
+    <div class="how-it-works-preview">
+        <div class="preview-text">
+            <h2>Everything in one simple dashboard</h2>
+            <p>
+                TailTales helps you keep your pet’s care more organised, whether you are checking
+                upcoming appointments, reviewing preventive care, or looking up an important contact.
+            </p>
+
+            <div class="preview-actions">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}" class="primary-btn">Go to Dashboard</a>
+                {% else %}
+                    <a href="{% url 'register' %}" class="primary-btn">Create Account</a>
+                    <a href="{% url 'login' %}" class="secondary-btn">Log In</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="preview-image-box">
+            <div class="preview-placeholder">
+                Dashboard preview coming soon
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

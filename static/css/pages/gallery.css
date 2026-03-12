@@ -56,3 +56,6 @@
     display: block;
     margin-bottom: 0.75rem;
 }
+.gallery-image {
+    cursor: pointer;
+}
