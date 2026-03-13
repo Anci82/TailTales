@@ -23,12 +23,21 @@ load_dotenv(BASE_DIR / ".env")
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--^e3ahfojs47#^4qj&q%=5%2(3nk*w2=awpo#83jq8-t-%=4r)'
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    "django-insecure-dev-fallback-only-not-for-production"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['Anci82.pythonanywhere.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv(
+        "ALLOWED_HOSTS",
+        "anci82.pythonanywhere.com,127.0.0.1,localhost"
+    ).split(",")
+]
 
 
 # Application definition
@@ -143,6 +152,9 @@ ANYMAIL = {
     "RESEND_API_KEY": os.getenv("RESEND_API_KEY"),
 }
 
-DEFAULT_FROM_EMAIL = "TailTales <hello@mail.tailtales.co.uk>"
+DEFAULT_FROM_EMAIL = os.getenv(
+    "DEFAULT_FROM_EMAIL",
+    "TailTales <hello@mail.tailtales.co.uk>"
+)
 
 
