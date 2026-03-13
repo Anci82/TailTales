@@ -22,8 +22,10 @@
 }
 
 .form-card h1 {
+    font-family: 'Alex Brush', cursive;
+    font-weight: 700;
     text-align: center;
-    margin: 0 0 18px 0;
+    margin: 10px 0 18px 0;
     color: darkslateblue;
     word-break: break-word;
 }
