@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 {% block title %}Edit {{ pet.name }}{% endblock %}
@@ -8,9 +7,63 @@
     <div class="form-card">
         <h1>Edit {{ pet.name }}</h1>
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }}
+
+            {% if form.non_field_errors %}
+                <div class="form-errors">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <p>
+                {{ form.name.label_tag }}
+                {{ form.name }}
+                {{ form.name.errors }}
+            </p>
+
+            <p>
+                {{ form.species.label_tag }}
+                {{ form.species }}
+                {{ form.species.errors }}
+            </p>
+
+            <p>
+                {{ form.breed.label_tag }}
+                {{ form.breed }}
+                {{ form.breed.errors }}
+            </p>
+
+            <p>
+                {{ form.age.label_tag }}
+                {{ form.age }}
+                {{ form.age.errors }}
+            </p>
+
+            <p>
+                {{ form.weight.label_tag }}
+                {{ form.weight }}
+                {{ form.weight.errors }}
+            </p>
+
+            <div class="custom-file-field">
+                <label for="{{ form.photo.id_for_label }}">Photo:</label>
+
+                {% if pet.photo %}
+                    <p class="current-photo-link">
+                        <a href="{{ pet.photo.url }}" target="_blank" rel="noopener noreferrer">View current photo</a>
+                    </p>
+                {% endif %}
+
+                {{ form.photo }}
+                {{ form.photo.errors }}
+            </div>
+
+            <p class="checkbox-field">
+                {{ form.show_in_gallery.label_tag }}
+                {{ form.show_in_gallery }}
+                {{ form.show_in_gallery.errors }}
+            </p>
 
             <div class="form-actions">
                 <button type="submit" class="primary-btn">Save</button>

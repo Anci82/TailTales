@@ -7,9 +7,11 @@
         <div class="form-card">
             <h1>{{ pet.name }}</h1>
 
-            {% if pet.photo_url %}
+            {% if pet.photo %}
                 <div class="pet-image-wrapper">
-                    <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" class="pet-image">
+                    <a href="{{ pet.photo.url }}" target="_blank" rel="noopener noreferrer">
+                        <img src="{{ pet.photo.url }}" alt="{{ pet.name }}" class="pet-image">
+                    </a>
                 </div>
             {% endif %}
 
@@ -17,12 +19,6 @@
             <p><strong>Breed:</strong> {{ pet.breed }}</p>
             <p><strong>Age:</strong> {{ pet.age }}</p>
             <p><strong>Weight:</strong> {{ pet.weight }}</p>
-            {% if pet.photo_url %}
-                <p>
-                    <strong>Photo:</strong>
-                    <a href="{{ pet.photo_url }}" target="_blank" rel="noopener noreferrer">Open image</a>
-                </p>
-            {% endif %}
 
             <div class="form-actions">
                 <a class="primary-btn" href="{% url 'pet-edit' pet.pk %}">Edit</a>

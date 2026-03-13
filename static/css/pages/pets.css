@@ -44,7 +44,8 @@
 
 .my-pets-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+    justify-content: center;
     gap: 1.5rem;
 }
 
@@ -54,24 +55,34 @@
     padding: 1rem;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.my-pet-image {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-    margin-bottom: 0.75rem;
+    max-width: 320px;
+    margin: 0 auto;
 }
-
-.my-pet-image-placeholder {
+.my-pet-image-wrap {
+    width: 100%;
+    max-width: 220px;
+    height: 220px;
+    margin: 0 auto 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(149, 183, 199, 0.25);
+    background: #f8f6f2;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+}
+.my-pet-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.my-pet-image-placeholder {
     color: #555;
     font-weight: bold;
+    background: rgba(149, 183, 199, 0.18);
 }
 
 .my-pet-card h3 {
@@ -162,6 +173,44 @@
     color: #b23434;
     font-weight: 700;
     font-size: 0.92rem;
+}
+.custom-file-field {
+    margin-bottom: 1.25rem;
+}
+
+.custom-file-field label {
+    display: block;
+    margin-bottom: 0.45rem;
+}
+
+.current-photo-link {
+    margin: 0 0 0.5rem 0;
+}
+
+.current-photo-link a {
+    color: #7a3db8;
+    text-decoration: underline;
+}
+
+.custom-file-field input[type="file"] {
+    width: auto;
+    max-width: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    display: block;
+}
+
+.checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-field label {
+    margin: 0;
 }
 
 @media (max-width: 900px) {

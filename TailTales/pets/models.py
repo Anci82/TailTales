@@ -7,7 +7,6 @@ class Pet(models.Model):
     NAME_MIN_LENGTH = 2
     NAME_MAX_LENGTH = 30
     BREED_MAX_LENGTH = 30
-    PHOTO_URL_MAX_LENGTH = 500
 
     SPECIES_CHOICES = [
         ('Dog', 'Dog'),
@@ -49,8 +48,8 @@ class Pet(models.Model):
         validators=[MinValueValidator(0.1)],
     )
 
-    photo_url = models.URLField(
-        max_length=PHOTO_URL_MAX_LENGTH,
+    photo = models.ImageField(
+        upload_to='pets/',
         blank=True,
         null=True,
     )

@@ -65,10 +65,7 @@ class PetGalleryView(views.ListView):
     def get_queryset(self):
         queryset = Pet.objects.filter(
             show_in_gallery=True,
-        ).exclude(
-            photo_url__isnull=True,
-        ).exclude(
-            photo_url='',
+            photo__isnull=False,
         )
 
         filter_by = self.request.GET.get('filter', 'all')

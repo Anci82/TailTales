@@ -21,10 +21,12 @@
             <div class="my-pets-grid">
                 {% for pet in pets %}
                     <article class="my-pet-card">
-                        {% if pet.photo_url %}
-                            <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" class="my-pet-image">
+                        {% if pet.photo %}
+                            <a href="{% url 'pet-detail' pet.pk %}" class="my-pet-image-wrap">
+                                <img src="{{ pet.photo.url }}" alt="{{ pet.name }}" class="my-pet-image">
+                            </a>
                         {% else %}
-                            <div class="my-pet-image my-pet-image-placeholder">
+                            <div class="my-pet-image-wrap my-pet-image-placeholder">
                                 <span>No photo yet</span>
                             </div>
                         {% endif %}

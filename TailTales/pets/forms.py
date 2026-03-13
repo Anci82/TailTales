@@ -5,11 +5,11 @@ from TailTales.pets.models import Pet
 class PetBaseForm(forms.ModelForm):
     class Meta:
         model = Pet
-        fields = ('name', 'species', 'breed', 'age', 'weight', 'photo_url', 'show_in_gallery')
+        fields = ('name', 'species', 'breed', 'age', 'weight', 'photo', 'show_in_gallery')
         labels = {
             'age': 'Age (years)',
             'weight': 'Weight (kg)',
-            'photo_url': 'Photo URL',
+            'photo': 'Photo',
             'show_in_gallery': 'Show in public gallery',
         }
         widgets = {
@@ -17,7 +17,7 @@ class PetBaseForm(forms.ModelForm):
             'weight': forms.NumberInput(attrs={'min': 0.1, 'step': '0.1', 'placeholder': 'e.g. 22.5'}),
             'name': forms.TextInput(attrs={'placeholder': 'e.g. Rita'}),
             'breed': forms.TextInput(attrs={'placeholder': 'e.g. Husky'}),
-            'photo_url': forms.URLInput(attrs={'placeholder': 'https://example.com/photo.jpg'}),
+            'photo': forms.FileInput(),
         }
 
     def __init__(self, *args, **kwargs):

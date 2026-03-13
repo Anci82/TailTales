@@ -38,9 +38,11 @@
             <div class="gallery-grid">
                 {% for pet in pets %}
                     <article class="gallery-card">
-                        <a href="{{ pet.photo_url }}" target="_blank" rel="noopener noreferrer">
-                            <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" class="gallery-image">
-                        </a>
+                        {% if pet.photo %}
+                            <a href="{{ pet.photo.url }}" target="_blank" rel="noopener noreferrer">
+                                <img src="{{ pet.photo.url }}" alt="{{ pet.name }}" class="gallery-image">
+                            </a>
+                        {% endif %}
 
                         <h3>{{ pet.name }}</h3>
                         <p><strong>Species:</strong> {{ pet.species }}</p>
@@ -60,8 +62,7 @@
                     <nav class="pagination-bar">
                         {% if page_obj.has_previous %}
                             <a class="page-btn nav-btn"
-                               href="?page=
-                                       {{ page_obj.previous_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                               href="?page={{ page_obj.previous_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
                                 Previous
                             </a>
                         {% else %}
@@ -74,8 +75,7 @@
                                     <span class="page-btn current-page">{{ num }}</span>
                                 {% else %}
                                     <a class="page-btn"
-                                       href="?page=
-                                               {{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                                       href="?page={{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
                                         {{ num }}
                                     </a>
                                 {% endif %}
@@ -88,8 +88,7 @@
 
                         {% if page_obj.has_next %}
                             <a class="page-btn nav-btn"
-                               href="?page=
-                                       {{ page_obj.next_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                               href="?page={{ page_obj.next_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
                                 Next
                             </a>
                         {% else %}
