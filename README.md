@@ -85,7 +85,7 @@ python manage.py runserver
 
 ## Testing
 
-The project currently includes automated tests for the [`care` app](care/tests.py), covering models, forms, views, and API endpoints.
+The project currently includes automated tests for the [`care` app](TailTales/care/tests.py), covering models, forms, views, and API endpoints.
 
 To run the tests:
 
