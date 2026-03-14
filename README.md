@@ -65,7 +65,6 @@ The project is organised into reusable Django apps:
 - `contacts` - service contacts management
 - `common` - dashboard and shared views/templates
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 
 ## Quick Start
