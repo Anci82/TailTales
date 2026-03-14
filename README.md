@@ -1,7 +1,6 @@
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![Django](https://img.shields.io/badge/django-5.0+-green.svg)
-![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
-
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 # TailTales
 
 **Live Demo:** https://anci82.pythonanywhere.com/
@@ -66,8 +65,10 @@ The project is organised into reusable Django apps:
 - `contacts` - service contacts management
 - `common` - dashboard and shared views/templates
 
-## Quick Start
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+
+## Quick Start
 ```bash
 git clone https://github.com/Anci82/TailTales.git
 cd TailTales
@@ -79,3 +80,9 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
+
+```
+[Environment Example](.env.example)
+
+
+
