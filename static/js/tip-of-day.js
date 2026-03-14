@@ -89,5 +89,5 @@ if (tipEl) {
   }
 
   showNextTip();
-  setInterval(showNextTip, 30000);
+  setInterval(showNextTip, 10000);
 }

@@ -54,7 +54,6 @@
 @media (max-width: 900px) {
     .home-hero {
         grid-template-columns: 1fr;
-        min-height: auto;
     }
 
     .home-hero-image {
@@ -91,10 +90,6 @@
 }
 
 @media (max-width: 600px) {
-    .home-hero {
-        min-height: auto;
-    }
-
     .home-hero-image {
         min-height: 220px;
     }
