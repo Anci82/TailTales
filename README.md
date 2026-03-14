@@ -83,5 +83,14 @@ python manage.py runserver
 ```
 [Environment Example](env-example)
 
+## Testing
+
+The project currently includes automated tests for the [`care` app](care/tests.py), covering models, forms, views, and API endpoints.
+
+To run the tests:
+
+```bash
+python manage.py test care
+
 
 

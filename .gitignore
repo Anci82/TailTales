@@ -14,7 +14,7 @@ staticfiles/
 
 # Environment variables
 .env
-.env.*
+
 
 # IDEs
 .idea/
@@ -29,4 +29,3 @@ Thumbs.db
 htmlcov/
 .pytest_cache/
 
-.env
