@@ -1,0 +1,4 @@
+SECRET_KEY=your-secret-key
+DEBUG=True
+RESEND_API_KEY=your-resend-api-key
+DEFAULT_FROM_EMAIL=your-email@example.com
