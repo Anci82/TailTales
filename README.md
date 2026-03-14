@@ -81,7 +81,7 @@ python manage.py createsuperuser
 python manage.py runserver
 
 ```
-[Environment Example](.env.example)
+[Environment Example](env-example)
 
 
 
